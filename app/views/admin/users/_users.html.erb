@@ -1,0 +1,27 @@
+<tr>
+	<td>
+		<%= link_to users.name, admin_user_path(users), :title => "Show this user." %>
+	</td>
+	<td>
+		<%= users.login %>
+	</td>
+	<td>
+		<%= users.last_login_at %>
+	</td>
+	<td>
+		<%= users.created_at %>
+	</td>
+	<td>
+		<%= users.updated_at %>
+	</td>
+	<td>
+		<ul class="table_actions">
+			<li>
+				<%= link_to image_tag("/images/icons/shape_square_edit.png"), edit_admin_user_path(users), :title => "Edit this user.", :class => "tip" %>
+			</li>
+			<li>
+				<%= link_to image_tag("/images/icons/delete.png"), admin_user_path(users), :confirm => 'Are you sure?', :method => :delete, :title => "Delete this user.", :class => "tip" %>
+			</li>
+		</ul>
+	</td>
+</tr>

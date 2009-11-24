@@ -1,0 +1,33 @@
+<% content_for :header do %>
+	<%= render :partial => 'admin/shared/main_menu' %>
+	<div id="sub_nav">
+		<ul>
+			<li>
+				<%= link_to "Post", new_admin_post_path, :title => "Create a new post.", :class => "tip" %>
+			</li>
+			<li>
+				<%= link_to "Page", new_admin_page_path, :title => "Create a new page.", :class => "tip" %>
+			</li>
+			<li>
+				<%= link_to "Link", new_admin_link_path, :title => "Create a new link.", :class => "tip" %>
+			</li>
+			<li>
+				<%= link_to "Event", new_admin_event_path, :title => "Create a new event.", :class => "tip" %>
+			</li>
+			<li>
+				<%= link_to "Album", new_admin_album_path, :title => "Create a new album.", :class => "tip" %>
+			</li>
+		</ul>
+	</div>
+	<div id="search_menu">
+		&nbsp;
+	</div>
+<% end %>
+<div id="sidebar">
+	<%= render :partial => "sidebar" %>
+</div>
+<div id="content">
+	<div id="recent_activity" class="activity_box">
+		<%= render :partial => 'recent_activity' %>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+<% if @event_search.count > 0 %>
+<table class="table" border="0" cellpadding="0" cellspacing="0">
+	<thead class="search">
+		<tr>
+			<th><%= order @event_search, :by => :title %></th>
+			<th><%= order @event_search, :by => :start %></th>
+			<th><%= order @event_search, :by => :end %></th>
+			<th><%= order @event_search, :by => :event_category, :as => "Category" %></th>
+			<th><%= order @event_search, :by => :created_at, :as => "Created" %></th>
+			<th><%= order @event_search, :by => :updated_at, :as => "Updated" %></th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<td colspan="7">
+				<div class="pagination search">
+					<%= will_paginate @event_results, :param_name => :events_page %>
+				</div>
+			</td>
+		</tr>
+	</tfoot>
+	<tbody>
+		<%= render :partial => 'links', :collection => @event_results %>
+	</tbody>
+</table>
+<%- end -%>

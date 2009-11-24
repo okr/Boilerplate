@@ -1,0 +1,27 @@
+<% if @page_search.count > 0 %>
+<table class="table" border="0" cellpadding="0" cellspacing="0">
+	<thead class="search">
+		<tr>
+			<th>Position</th>
+			<th><%= order @page_search, :by => :title %></th>
+			<th><%= order @page_search, :by => :page_category, :as => "Category" %></th>
+			<th><%= order @page_search, :by => :published %></th>
+			<th><%= order @page_search, :by => :created_at, :as => "Created" %></th>
+			<th><%= order @page_search, :by => :updated_at, :as => "Updated" %></th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<td colspan="7">
+				<div class="pagination search">
+					<%= will_paginate @page_results, :param_name => :pages_page %>
+				</div>
+			</td>
+		</tr>
+	</tfoot>
+	<tbody>
+		<%= render :partial => 'pages', :collection => @page_results %>
+	</tbody>
+</table>
+<%- end -%>

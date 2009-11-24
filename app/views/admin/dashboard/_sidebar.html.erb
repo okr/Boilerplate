@@ -1,0 +1,7 @@
+<ul id="sidebar_nav" class="standard">
+	<%- for link in @links -%>
+	<li>
+		<%= link_to sanitize(h(link.title)), link.url, :rel => "external" %>
+	</li>
+	<%- end -%>
+</ul>

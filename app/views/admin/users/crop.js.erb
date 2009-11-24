@@ -1,0 +1,81 @@
+<link href="/stylesheets/Jcrop/jquery.Jcrop.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="/javascripts/jquery.Jcrop.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript" charset="utf-8">
+
+jQuery(function() {
+    jQuery().ajaxStart(function(){
+        jQuery.blockUI();
+    });
+
+    jQuery().ajaxComplete(function(){
+        //jQuery.fn.fancybox.close();
+        <% flash.each do |key, msg| %>
+			jQuery(document).ready(function() {
+				jQuery.jGrowl("<%= msg %>", {
+					header: "<%= key.to_s.capitalize %>",
+					theme: "<%= key %>",
+					sticky: false,
+					corners: '10px',
+					life: 6000
+				});
+			});
+		<% end %>
+	    //jQuery(document).find("#avatar a.modal.preview img").append('<%= escape_javascript(@user.avatar.url(:small)) %>');
+    }); 
+
+    jQuery('#cropform').ajaxForm({
+        target: '#cropper'
+    });
+    
+    
+  jQuery('#cropbox').Jcrop({
+    onChange: update_crop,
+    onSelect: update_crop,
+    setSelect: [ <%= @user.crop_x %>, <%= @user.crop_y %>, <%= @user.crop_w %>, <%= @user.crop_h %> ],
+    aspectRatio: 1
+  });
+ 
+});
+
+function update_crop(coords) {
+    var rx = 100 / coords.w;
+    var ry = 100 / coords.h;
+
+    jQuery('#preview').css({
+    	width: Math.round(rx * <%= @user.avatar_geometry(:large).width %>) + 'px',
+    	height: Math.round(ry * <%= @user.avatar_geometry(:large).height %>) + 'px',
+    	marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+    	marginTop: '-' + Math.round(ry * coords.y) + 'px'
+    });
+
+    //var ratio = <%= @user.avatar_geometry(:original).width %> / <%= @user.avatar_geometry(:large).width %>;
+
+    //jQuery('#crop_x').val(Math.floor(coords.x * ratio));
+    //jQuery('#crop_y').val(Math.floor(coords.y * ratio));
+    //jQuery('#crop_w').val(Math.floor(coords.w * ratio));
+    //jQuery('#crop_h').val(Math.floor(coords.h * ratio));
+
+    jQuery('#crop_x').val(coords.x);
+    jQuery('#crop_y').val(coords.y);
+    jQuery('#crop_w').val(coords.w);
+    jQuery('#crop_h').val(coords.h);
+}
+
+</script>
+<div id="cropper">
+    <div style="width:100px; height:100px; overflow:hidden">
+    	<%= image_tag @user.avatar.url(:large), :id => "preview" %>
+    </div>
+    <% form_for [:admin, @user], :url => update_avatar_admin_user_path(@user), :html => { :id => "cropform", :multipart => true, :method => :put } do |f| %>
+    	<%= image_tag @user.avatar.url(:large), :id => "cropbox" %>
+    	<% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
+    		<%= f.text_field attribute, :id => attribute %>
+    	<% end %>
+    	<% unless @user.avatar.blank? %>
+    	<div class="submit">
+    		<%= f.submit "Crop", :id => "cropsubmit" %>
+    	</div>
+    	<% end %>
+    <% end %>
+</div>

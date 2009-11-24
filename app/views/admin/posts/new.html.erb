@@ -1,0 +1,26 @@
+<% content_for :head do %>
+	<%= javascript_include_tag 'tiny_mce/tiny_mce', 'tiny-mce-config' %>
+<% end %>
+<% content_for :header do %>
+	<%= render :partial => 'admin/shared/main_menu' %>
+	<div id="sub_nav">
+		<ul>
+			<li>
+				<%= link_to 'View All Posts', admin_posts_path, :title => "View all posts" %>
+			</li>
+		</ul>
+	</div>
+	<%= error_messages_for :post %>
+	<div id="search_menu">	
+		<%= render :partial => 'admin/shared/search/posts/ajax' %>
+	</div>
+<% end %>
+<div id="sidebar">
+	<%= render :partial => "sidebar" %>
+</div>
+<div id="content">
+	<h3><span class="cat_type">Create A New</span> Post</h3>
+	<% form_for [:admin, @post] do |f| %>
+		<%= render :partial => 'form', :locals => {:f => f} %>
+	<% end %>
+</div>

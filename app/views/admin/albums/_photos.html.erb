@@ -1,0 +1,8 @@
+<div class="thumb">
+	<%= link_to image_tag(photos.image.url(:thumb), :alt => "#{sanitize(h(photos.title))}"), photos.image.url(:large), :title => "#{sanitize(h(photos.title))}", :rel => "#{photos.image.url}" %>
+	<div class="thumb_caption" style="display:none">
+		<p>
+			<%= sanitize(h(photos.caption)) %>
+		</p>
+	</div>
+</div>

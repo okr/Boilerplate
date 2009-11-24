@@ -1,0 +1,23 @@
+<% content_for :header do %>
+	<%= render :partial => 'admin/shared/main_menu' %>
+	<div id="sub_nav">
+		<ul>
+			<li>
+				<%= link_to 'View All Links', admin_links_path, :title => "View all links" %>
+			</li>
+		</ul>
+	</div>
+	<%= error_messages_for :link %>
+	<div id="search_menu">
+		<%= render :partial => 'admin/shared/search/links/non_ajax' %>
+	</div>
+<% end %>
+<div id="sidebar">
+	<%= render :partial => "sidebar" %>
+</div>
+<div id="content">
+	<h3><span class="cat_type">Create A New</span> Link</h3>
+	<% form_for [:admin, @link] do |f| %>
+		<%= render :partial => 'form', :locals => {:f => f} %>
+	<% end %>
+</div>

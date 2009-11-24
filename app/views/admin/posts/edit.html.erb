@@ -1,0 +1,58 @@
+<% content_for :head do %>
+	<%= javascript_include_tag 'tiny_mce/tiny_mce', 'tiny-mce-config' %>
+<% end %>
+<% content_for :header do %>
+	<%= render :partial => 'admin/shared/main_menu' %>
+	<div id="sub_nav">
+		<ul>
+			<li>
+				<%= link_to 'View All Posts', admin_posts_path %>
+			</li>
+			<li>
+				<%= link_to 'Create Post', new_admin_post_path %>
+			</li>
+		</ul>
+	</div>
+	<%= error_messages_for :post %>
+	<div id="search_menu">	
+		<%= render :partial => 'admin/shared/search/posts/ajax' %>
+	</div>
+<% end %>
+<div id="sidebar">
+	<%= render :partial => "sidebar" %>
+</div>
+<div id="content">
+	<h3>
+		<span class="cat_type">Editing Post</span> <%= sanitize(h(@post.title)) %>
+	</h3>
+	<div id="actions_menu">
+		<ul class="actions">
+			<li class="actions_left">
+				&nbsp;
+			<li>
+			<li>
+				<%= link_to "View", admin_post_path(@post), :title => "View this post." %>
+			</li>
+			<li>
+				<%= link_to "Delete", admin_post_path(@post), :title => "Delete this post.", :confirm => 'Are you sure?', :method => :delete %>
+			</li>
+			<li class="actions_right">
+				&nbsp;
+			<li>
+		</ul>
+		<ul class="actions">
+			<li class="actions_left">
+				&nbsp;
+			<li>
+			<li class="timeline_event">
+				<%= link_to "Last updated by #{sanitize(h(@post.user.name))} at #{@post.updated_at}", admin_user_path(@post.user) %>
+			</li>
+			<li class="actions_right">
+				&nbsp;
+			<li>
+		</ul>
+	</div>
+	<% form_for [:admin, @post], :action => 'update' do |f| -%>
+		<%= render :partial => 'form', :locals => {:f => f} %>
+	<% end %>
+</div>

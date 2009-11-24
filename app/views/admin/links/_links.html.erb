@@ -1,0 +1,30 @@
+<tr>
+	<td>
+		<%= link_to sanitize(h(links.title)), admin_link_path(links), :title => "Show this link." %>
+	</td>
+	<td>
+		<%= link_to links.url, links.url, :title => "Visit this site", :rel => "external" %>
+	</td>
+	<td>
+		<%= links.admin %>
+	</td>
+	<td>
+		<%= links.link_category.title -%>
+	</td>
+	<td>
+		<%= links.created_at %>
+	</td>
+	<td>
+		<%= links.updated_at %>
+	</td>
+	<td>
+		<ul class="table_actions">
+			<li>
+				<%= link_to image_tag("/images/icons/shape_square_edit.png"),  edit_admin_link_path(links), :title => "Edit this link." %>
+			</li>
+			<li>
+				<%= link_to image_tag("/images/icons/delete.png"), admin_link_path(links), :confirm => 'Are you sure?', :method => :delete, :title => "Delete this link." %>
+			</li>
+		</ul>
+	</td>
+</tr>

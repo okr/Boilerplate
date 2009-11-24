@@ -1,0 +1,15 @@
+<ul id="sidebar_nav" class="standard">
+	<% for album in @albums %>
+	<li <%- if album == @album -%>class="active"<%- end -%>>
+		<%= link_to album.title, admin_album_path(album) %>
+		<ul class="sidebar_actions">
+			<li>
+				<%= link_to image_tag("/images/icons/shape_square_edit.png"), edit_admin_album_path(album), :title => "Edit this album." %>
+			</li>
+			<li>
+				<%= link_to image_tag("/images/icons/delete.png"), admin_album_path(album), :confirm => 'Are you sure?', :method => :delete, :title => "Delete this album" %>
+			</li>
+		</ul>
+	</li>
+	<% end %>
+</ul>

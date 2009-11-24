@@ -1,0 +1,42 @@
+<% content_for :jstemplates do -%>
+  <%= "var object='#{ generate_template(f, :tags) }'" %>
+<% end %>
+<h4>General Properties</h4>
+<fieldset class="fieldset_toggle">
+	<div class="fieldset_left">
+		<div class="field_element">
+			<label for="published">Category&nbsp;:&nbsp;</label>
+			<%= f.collection_select(:post_category_id, @categories, :id, :title, {:prompt => "Choose One"}, :class => "small formElement") %>
+		</div>
+		<div class="field_element">
+			<label for="published">Published&nbsp;:&nbsp;</label>
+			<%= f.check_box :published, :class => "checkbox" %>
+		</div>
+	</div>
+	<div class="fieldset_right">
+		<div class="field_element">
+		  <label for="article_title">Title&nbsp;:&nbsp;</label>
+		  <%= f.text_field :title, :class => 'textfield' %>
+		</div>
+	</div>
+</fieldset>
+<br />
+<h4><label for="article_body">Body</label></h4>
+<fieldset class="fieldset_toggle">
+	<div class="field_element">
+	  <%= f.text_area :body, :class => "tinymce" %>
+	</div>
+</fieldset>
+<br />
+<h4>Tagging</h4>
+<fieldset class="fieldset_toggle">
+	<div class="field_element">
+		<%= render :partial => 'tags_form', :locals => {:f => f} %>
+	</div>
+</fieldset>
+<div class="hr">
+	&nbsp;
+</div>
+<div class="submit">
+  <%= submit_tag 'save', :id => 'create' %><%= link_to 'cancel', admin_posts_url %>
+</div>

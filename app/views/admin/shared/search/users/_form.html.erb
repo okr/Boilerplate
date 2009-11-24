@@ -1,0 +1,17 @@
+<div class="field_element search_button">
+	<span class="spyglass"></span>
+	<%= f.text_field :name_contains %>
+	<a href="#" class="toggle_search" title="Search and filter all posts.">Advanced Search</a>
+	<span class="search_count"><%= @user_search.count %> users found</span>
+</div>
+<div id="advanced_search" style="display:none">
+	<fieldset>
+		<div class="field_element">
+			<%= f.label :login_contains, "Login" %><br />
+			<%= f.text_field :login_contains, :class => "textfield" %>
+		</div>
+	</fieldset>
+	<div class="submit">
+		<%= f.submit "Search" %><button type="button" class="reset">Reset</button>
+	</div>
+</div>

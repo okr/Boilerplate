@@ -1,0 +1,64 @@
+--- !ruby/object:Gem::Specification 
+name: shuber-sortable
+version: !ruby/object:Gem::Version 
+  version: 1.0.6
+platform: ruby
+authors: 
+- Sean Huber
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2009-07-06 00:00:00 -07:00
+default_executable: 
+dependencies: []
+
+description: Allows you to sort ActiveRecord items in multiple lists with multiple scopes
+email: shuber@huberry.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: []
+
+files: 
+- CHANGELOG
+- init.rb
+- lib/sortable.rb
+- MIT-LICENSE
+- Rakefile
+- README.rdoc
+- test/sortable_test.rb
+has_rdoc: true
+homepage: http://github.com/shuber/sortable
+licenses: []
+
+post_install_message: 
+rdoc_options: 
+- --line-numbers
+- --inline-source
+- --main
+- README.rdoc
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.5
+signing_key: 
+specification_version: 2
+summary: Allows you to sort ActiveRecord items in multiple lists with multiple scopes
+test_files: 
+- test/sortable_test.rb

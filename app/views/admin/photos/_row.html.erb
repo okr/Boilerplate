@@ -1,0 +1,6 @@
+<li class="photo_li" id="photo_<%= row.id %>">
+	<%= link_to image_tag(row.image(:cover), :alt => h(row.title)), row.image.url, :title => h(row.title), :rel => 'thumb' %>
+	<div align="center">
+		<%= link_to 'Edit', "#{edit_admin_album_photo_path(row.album, row)}?width=350&height=250", :title => h("Editing #{row.title}") %> | <%= link_to 'Remove', admin_album_photo_path(row.album, row), :rel => 'remove' %>
+	</div>
+</li>

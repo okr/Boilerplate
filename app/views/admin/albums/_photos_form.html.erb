@@ -1,0 +1,20 @@
+<p>
+	<a href="#addPhoto" class="addChild" rel="photos">Add a photo</a>
+	<a name="addPhoto"></a>
+	<%= link_to "Sort Photos", admin_photos_path(), :class => "sort_photos", :rel => "external" %>
+</p>
+<table class="table" border="0" cellpadding="0" cellspacing="0">
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>Title</th>
+				<th>Caption</th>
+				<th>Actions</th>
+			</tr>
+		</thead>	
+		<tbody id="photos" class="childArea">
+ 		<% f.fields_for :photos do |photo_form| %>
+			<%= render :partial => 'photo', :locals => { :f => photo_form } %>
+		<% end %>
+	 	</tbody>
+</table>

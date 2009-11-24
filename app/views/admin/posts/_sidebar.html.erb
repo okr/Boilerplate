@@ -1,0 +1,15 @@
+<ul id="sidebar_nav" class="standard">
+	<% for post in @posts %>
+	<li <%- if post == @post -%>class="active"<%- end -%>>
+		<%= link_to post.title, admin_post_path(post) %>
+		<ul class="sidebar_actions">
+			<li>
+				<%= link_to image_tag("/images/icons/shape_square_edit.png"), edit_admin_post_path(post), :title => "Edit this post." %>
+			</li>
+			<li>
+				<%= link_to image_tag("/images/icons/delete.png"), admin_post_path(post), :confirm => 'Are you sure?', :method => :delete, :title => "Delete this post" %>
+			</li>
+		</ul>
+	</li>
+	<% end %>
+</ul>

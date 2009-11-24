@@ -1,0 +1,21 @@
+<div class="field_element search_button">
+	<span class="spyglass"></span>
+	<%= f.text_field :title_contains %>
+	<a href="#" class="toggle_search" title="Search and filter all links.">Advanced Search</a>
+	<span class="search_count"><%= @link_search.count %> links found</span>
+</div>
+<div id="advanced_search" style="display:none">
+	<fieldset>
+		<div class="field_element">
+			<%= f.label :url_contains, "URL" %><br />
+			<%= f.text_field :url_contains, :class => "textfield" %>
+		</div>
+		<div class="field_element">
+			<%= f.label :link_category_id_eq, "Category" %><br />
+			<%= f.select :link_category_id_eq, @categories.collect {|c| [c.title, c.id]}, :prompt => "Choose One" %>
+		</div>
+	</fieldset>
+	<div class="submit">
+		<%= f.submit "Search" %><button type="button" class="reset">Reset</button>
+	</div>
+</div>

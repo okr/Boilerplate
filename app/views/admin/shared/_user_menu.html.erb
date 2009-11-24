@@ -1,0 +1,11 @@
+<ul class="user_menu">
+	<li>
+		<%= link_to @current_user.name, admin_user_path(@current_user), :title => "View your user profile", :class => "tip" %>
+	</li>
+	<li>
+		<%= link_to "View Public Site", root_path, :rel => 'external' %>
+	</li>
+	<li>
+		<%= link_to 'Log Out', logout_path, :title => "Log out of the admin area", :class => "tip" %>
+	</li>
+</ul>

@@ -1,0 +1,35 @@
+<ul id="sidebar_nav" class="standard">
+	<% for page in @pages %>
+	<li <%- if page == @page -%>class="active"<%- end -%>>
+		<%= link_to page.name, admin_page_path(page) %>
+		<ul class="sidebar_actions">
+			<li>
+				<%= link_to image_tag("/images/icons/shape_square_edit.png"), edit_admin_page_path(page), :title => "Edit this page." %>
+			</li>
+			<li>
+				<%= link_to image_tag("/images/icons/delete.png"), admin_page_path(page), :confirm => 'Are you sure?', :method => :delete, :title => "Delete this page" %>
+			</li>
+			<%- unless page.first_item? -%>
+			<li>
+				<%= link_to image_tag("/images/icons/bullet_arrow_up.png"), higher_admin_page_path(page), :method => :put, :title => "Move this page up in position." %>
+			</li>
+			<%- end -%>
+			<%- unless page.last_item? -%>
+			<li>
+				<%= link_to image_tag("/images/icons/bullet_arrow_down.png"), lower_admin_page_path(page), :method => :put, :title => "Move this page down in position." %>
+			</li>
+			<%- end -%>
+			<%- unless page.first_item? -%>
+			<li>
+				<%= link_to image_tag("/images/icons/bullet_arrow_top.png"), top_admin_page_path(page), :method => :put, :title => "Move this page to the top." %>
+			</li>
+			<%- end -%>
+			<%- unless page.last_item? -%>
+			<li>
+				<%= link_to image_tag("/images/icons/bullet_arrow_bottom.png"), bottom_admin_page_path(page), :method => :put, :title => "Move this page to the bottom." %>
+			</li>
+			<%- end -%>
+		</ul>
+	</li>
+	<% end %>
+</ul>

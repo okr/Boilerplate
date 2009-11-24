@@ -1,0 +1,41 @@
+<% content_for :header do %>
+	<%= render :partial => 'shared/main_menu' %>
+	<div id="sub_nav">
+		<ul>
+			<li>
+				<%= link_to 'Forgot Password', forgot_password_admin_users_path %>
+			</li>
+		</ul>
+	</div>
+	<div id="search_menu">
+		&nbsp;
+	</div>
+<% end %>
+<div id="content_centered">
+	<div id="login_form">
+		<% form_for [:admin, @user_session], :url => user_session_path do |f| %>
+			<div class="field_element">
+				<%= f.label :login %>
+				<%= f.text_field :login, :class => "login" %>
+			</div>
+			<div class="field_element">
+				<%= f.label :password %>
+				<%= f.password_field :password, :class => "password" %>
+			</div>
+			<div class="field_element">
+				<ul class="login_actions">
+					<li>
+						<%= link_to 'Forgot Password', forgot_password_admin_users_path %>
+					</li>
+					<li>
+						<%= f.check_box :remember_me %>&nbsp;<%= f.label :remember_me %>
+					</li>
+					<li>
+						<%= f.submit "Login", :class => "submit" %>
+					</li>
+				</ul>
+			</div>
+		<% end %>
+	</div>
+	<div class="clear">&nbsp;</div>
+</div>

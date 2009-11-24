@@ -1,0 +1,25 @@
+<div id="event">
+	<p>
+		<strong>Title</strong> : <%= sanitize(h(@event.title)) %>
+	</p>
+	<p>
+		<strong>Date</strong> : <%= nice_date(@event.start)%> - <%= nice_date(@event.end)%>
+	</p>
+	<p>
+		<strong>Location</strong> : <%= sanitize(h(@event.location)) %>
+	</p>
+	<p>
+		<strong>Category</strong> :
+		<%= @event.event_category.title -%>
+	</p>
+	<p><strong>Description :</strong></p>
+	<div id="description">
+		<%= sanitize @event.description %>
+	</div>
+	<div class="hr">
+		&nbsp;
+	</div>
+	<div id="timeline_event">
+		<p>Last updated by <%= link_to sanitize(h(@event.user.name)), admin_user_path(@event.user) %> at <%= @event.updated_at %>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+  defaults: &defaults
+      site_name: Boilerplate
+      site_tagline: Boilerplate Rails Application
+      forgery: 'aa5f77f2c5fb11953942d585e3ed32f3'
+      admin_name: Raj Ojha
+      admin_email: rajo@mac.com
+      admin_password: f1gst3n
+      public_user_name: Joe The Plumber
+      public_user_email: okr.music@gmail.com
+      public_user_password: t3st
+      publisher_user_name: The Boss
+      publisher_user_email: mr.raj.ojha@gmail.com
+      publisher_user_password: t3st3rz
+      rest_site_key: 'e587f9d09baa59c920b9ee97ac70f58b3c51356c'
+      session_key: '_boilerplate_session'
+      stretches: 10
+      
+  development:
+    <<: *defaults
+    domain: boilerplate.local
+    address: boilerplate
+    port: 25
+    user_name: rajo@mac.com
+    password: 1328
+    sender: rajo@mac.com
+  test:
+    <<: *defaults
+
+  production:
+    <<: *defaults
+    domain: dev.boilerplate.com

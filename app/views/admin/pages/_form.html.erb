@@ -1,0 +1,41 @@
+<h4>General Properties</h4>
+<fieldset class="fieldset_toggle">
+	<div class="fieldset_left">
+		<div class="field_element">
+			<label for="category">Category&nbsp;:&nbsp;</label>
+			<%= f.collection_select(:page_category_id, @categories, :id, :title, {:prompt => "Choose One"}, :class => "small formElement") %>
+		</div>
+		<div class="field_element">
+			<label for="published">Published&nbsp;:&nbsp;</label>
+			<%= f.check_box :published, :class => "checkbox" %>
+		</div>
+		<div class="field_element">
+			<label for="home">Home Page&nbsp;:&nbsp;</label>
+			<%= f.check_box :home, :class => "checkbox" %>
+		</div>
+	</div>
+	<div class="fieldset_right">
+		<div class="field_element">
+			<label for="page_title">Title&nbsp;:&nbsp;</label>
+			<%= f.text_field :title, :class => "textfield" %>
+		</div>
+		<div class="field_element">
+			<label for="page_name">Name&nbsp;:&nbsp;</label>
+			<%= f.text_field :name, :class => "textfield" %>
+		</div>
+	</div>
+	<div class="clear">&nbsp;</div>
+</fieldset>
+<br />
+<h4><label for="page_body">Body</label></h4>
+<fieldset class="fieldset_toggle">
+	<div class="field_element">
+		<%= f.text_area :body, :class => "tinymce" %>
+	</div>
+</fieldset>
+<div class="hr">
+	&nbsp;
+</div>
+<div class="submit">
+	<%= submit_tag 'Save', :id => 'create' %><%= link_to 'Cancel', admin_pages_url %>
+</div>

@@ -1,0 +1,26 @@
+<% if @post_search.count > 0 %>
+<table class="table" border="0" cellpadding="0" cellspacing="0">
+	<thead class="search">
+		<tr>
+			<th><%= order @post_search, :by => :title %></th>
+			<th><%= order @post_search, :by => :published %></th>
+			<th><%= order @post_search, :by => :post_category, :as => "Category" %></th>
+			<th><%= order @post_search, :by => :created_at, :as => "Created" %></th>
+			<th><%= order @post_search, :by => :updated_at, :as => "Updated" %></th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<td colspan="6">
+				<div class="pagination search">
+					<%= will_paginate @post_results, :param_name => :posts_page %>
+				</div>
+			</td>
+		</tr>
+	</tfoot>
+	<tbody>
+		<%= render :partial => 'posts', :collection => @post_results %>
+	</tbody>
+</table>
+<%- end -%>

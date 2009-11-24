@@ -1,0 +1,27 @@
+<tr>
+	<td>
+		<%= link_to image_tag(albums.main_photo(:small)), albums.main_photo(:origional) %>
+	</td>
+	<td>
+		<%= link_to sanitize(h(albums.title)), admin_album_path(albums) %>
+	</td>
+	<td>
+		<%= albums.created_at %>
+	</td>
+	<td>
+		<%= albums.updated_at %>
+	</td>
+	<td>
+ 		<ul class="table_actions">
+			<li>
+				<%= link_to image_tag("/images/icons/shape_square_edit.png"), edit_admin_album_path(albums), :title => "Edit this album." %>
+			</li>
+			<li>
+				<%= link_to image_tag("/images/icons/delete.png"), admin_album_path(albums), :confirm => 'Are you sure?', :method => :delete, :title => "Delete this album." %>
+			</li>
+			<li>
+				<%= link_to image_tag("/images/icons/eye.png"), album_path(albums), :title => "View this album's public page.", :rel => 'external' %>
+			</li>
+		</ul>
+	</td>
+</tr>

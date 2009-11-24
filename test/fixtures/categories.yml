@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  name: MyString
+  slug: MyString
+  categories_count: 1
+  position: 1
+  parent_id: 1
+  categorization_id: 1
+  categorization_type: MyString
+
+two:
+  title: MyString
+  name: MyString
+  slug: MyString
+  categories_count: 1
+  position: 1
+  parent_id: 1
+  categorization_id: 1
+  categorization_type: MyString

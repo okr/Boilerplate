@@ -1,0 +1,50 @@
+<% content_for :header do %>
+	<%= render :partial => 'admin/shared/main_menu' %>
+	<div id="sub_nav">
+		<ul>
+			<li>
+				<%= link_to 'View All Links', admin_links_path %>
+			</li>
+			<li>
+				<%= link_to 'Create Link', new_admin_link_path %>
+			</li>
+		</ul>
+	</div>
+	<div id="search_menu">
+		<%= render :partial => 'admin/shared/search/links/non_ajax' %>
+	</div>
+<% end %>
+<div id="sidebar">
+	<%= render :partial => "sidebar" %>
+</div>
+<div id="content">
+	<h3><span class="cat_type">Link</span> <%= sanitize @link.title %></h3>
+	<div id="actions_menu">
+		<ul class="actions">
+			<li class="actions_left">
+				&nbsp;
+			<li>
+			<li>
+				<%= link_to "Edit", edit_admin_link_path(@link), :title => "Edit this link." %>
+			</li>
+			<li>
+				<%= link_to "Delete", admin_link_path(@link), :title => "Delete this link.", :confirm => 'Are you sure?', :method => :delete %>
+			</li>
+			<li class="actions_right">
+				&nbsp;
+			<li>
+		</ul>
+		<ul class="actions">
+			<li class="actions_left">
+				&nbsp;
+			<li>
+			<li class="timeline_event">
+				Last updated by <%= link_to sanitize(h(@link.user.name)), admin_user_path(@link.user) %> at <%= @link.updated_at %>
+			</li>
+			<li class="actions_right">
+				&nbsp;
+			<li>
+		</ul>
+	</div>
+	<%= render :partial => "link" %>
+</div>

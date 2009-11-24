@@ -1,0 +1,4 @@
+<div id="main_menu">
+	<%= navigation [{:dashboard => admin_root_path}, {:pages => admin_pages_path}, {:links => admin_links_path}, {:blog => admin_posts_path}, {:calendar => admin_events_path}, {:photos => admin_albums_path}, {:users => admin_users_path}], :authorize => [:admin], :with => :require_admin_user %>
+	<%= render :partial => 'admin/shared/user_menu' %>
+</div>

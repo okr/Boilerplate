@@ -1,0 +1,20 @@
+<ul class="submenu childArea" id="tags-form">
+	<li>
+		<a href="#addTag" class="addChild" rel="tags-form">Add a tag</a>
+		<a name="addPhoto"></a>
+	</li>
+	<% f.fields_for :tags do |tag| %>
+	<li>
+		<span class="tag_delete">
+			<%- unless tag.object.new_record? -%>
+			<%= tag.check_box :_delete, :class => "tip", :title => "Mark this tag for deletion." %>
+			<%- else -%>
+			<a href="#deleteTag" class="removeChild" title="Remove this tag.">
+				<%= image_tag("/images/icons/delete.png") %>
+			</a>
+			<%- end -%>
+		</span>
+		<%= tag.text_field :name, :style => "width: 220px;", :class => 'textfield tags-input' %>
+	</li>
+	<% end %>
+</ul>

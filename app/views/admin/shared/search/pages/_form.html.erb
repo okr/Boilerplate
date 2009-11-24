@@ -1,0 +1,21 @@
+<div class="field_element search_button">
+	<span class="spyglass"></span>
+	<%= f.text_field :title_contains %>
+	<a href="#" class="toggle_search" title="Search and filter all pages.">Advanced Search</a>
+	<span class="search_count"><%= @page_search.count %> pages found</span>
+</div>
+<div id="advanced_search" style="display:none">
+	<fieldset>
+		<div class="field_element">
+			<%= f.label :published_is, "Published" %><br />
+			<%= f.check_box :published_is, {}, "1", "" %>
+		</div>
+		<div class="field_element">
+			<%= f.label :page_category_id_eq, "Category" %><br />
+			<%= f.select :page_category_id_eq, @categories.collect {|c| [c.title, c.id]}, :prompt => "Choose One" %>
+		</div>
+	</fieldset>
+	<div class="submit">
+		<%= f.submit "Search" %><button type="button" class="reset">Reset</button>
+	</div>
+</div>

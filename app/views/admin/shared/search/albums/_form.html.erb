@@ -1,0 +1,11 @@
+<div class="field_element search_button">
+	<span class="spyglass"></span>
+	<%= f.text_field :title_contains %>
+	<a href="#" class="toggle_search" title="Search and filter all albums.">Advanced Search</a>
+	<span class="search_count"><%= @album_search.count %> albums found</span>
+</div>
+<div id="advanced_search" style="display:none">
+	<div class="submit">
+		<%= f.submit "Search" %><button type="button" class="reset">Reset</button>
+	</div>
+</div>

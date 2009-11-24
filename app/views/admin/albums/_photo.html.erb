@@ -1,0 +1,26 @@
+<tr class="photo copyForm">
+	<td>
+		<%- if controller.action_name == "edit" and f.object.image.exists? -%>
+		<%= link_to (image_tag f.object.image.url(:thumb)), f.object.image.url, :rel => "modal", :class => "preview" %>
+		<br />
+		<%- end -%>
+		<%= f.file_field :image, :class => "file_field formElement", :size => "0" %>
+	</td>
+	<td>
+		<%= f.text_field :title, :style => "width: 200px;", :class => "textfield formElement" %>
+	</td>
+	<td>
+		<%= f.text_field :caption, :style => "width: 200px;", :class => "textfield formElement" %>
+	</td>
+	<td>
+		<ul class="table_actions">
+			<li>
+				<%- unless f.object.new_record? -%>
+				<%= f.check_box :_delete, :class => "tip", :title => "Mark this photo for deletion." %>
+				<%- else -%>
+				<a href="#delete" class="removeChild" title="Remove this photo field."><%= image_tag("/images/icons/delete.png") %></a>
+				<%- end -%>
+			</li>
+		</ul>
+    </td>
+</tr>

@@ -1,0 +1,26 @@
+<% if @user_search.count > 0 %>
+<table class="table" border="0" cellpadding="0" cellspacing="0">
+	<thead class="search">
+		<tr>
+			<th><%= order @user_search, :by => :name %></th>
+			<th><%= order @user_search, :by => :login %></th>
+			<th><%= order @user_search, :by => :last_login_at %></th>
+			<th><%= order @user_search, :by => :created_at, :text => "Created" %></th>
+			<th><%= order @user_search, :by => :updated_at, :text => "Updated" %></th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<td colspan="6">
+				<div class="pagination search">
+					<%= will_paginate @user_results, :param_name => :search_page %>
+				</div>
+			</td>
+		</tr>
+	</tfoot>
+	<tbody>
+		<%= render :partial => 'users', :collection => @user_results %>
+	</tbody>
+</table>
+<%- end -%>

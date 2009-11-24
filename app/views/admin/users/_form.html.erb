@@ -1,0 +1,66 @@
+<h4 class="toggler">Main Information</h4>
+<fieldset id="main_info" class="box_toggle">
+	<div class="fieldset_left">
+		<div class="field_element">
+			<%= form.label :avatar %>&nbsp;:&nbsp;<br />
+			<div id="avatar">
+			<%- if controller.action_name == "edit" and form.object.avatar.exists? -%>
+				<%= link_to (image_tag form.object.avatar.url(:small)), form.object.avatar.url, :class => "modal preview" %>
+				<br />
+				<%= link_to "Crop", crop_admin_user_path(@user), :class => "crop" %>
+			<%- end -%>
+			</div>
+			<br />
+			<%= form.file_field :avatar, :class => "file_field formElement", :size => "0" %>
+		</div>
+	</div>
+	<div class="fieldset_right">
+		<div class="field_element">
+			<%= form.label :name %>&nbsp;:&nbsp;<br />
+			<%= form.text_field :name, :class => "textfield" %>
+		</div>
+		<div class="field_element">
+			<%= form.label :login %>&nbsp;:&nbsp;<br />
+			<%= form.text_field :login, :class => "textfield" %>
+		</div>
+		<div class="field_element">
+			<%= form.label :email %>&nbsp;:&nbsp;<br />
+			<%= form.text_field :email, :class => "textfield" %>
+		</div>
+	</div>
+	<div class="clear">&nbsp;</div>
+</fieldset>
+<br />
+<h4 class="toggler">Password &amp; Role</h4>
+<fieldset id="password_and_role" style="display:none;" class="box_toggle">
+	<div class="fieldset_left">
+		<div class="field_element">
+			<%= form.label :role_id %>&nbsp;:&nbsp;<%= form.collection_select(:role_id, @roles, :id, :name, {:prompt   => "Select a Role"}) %>
+		</div>
+	</div>
+	<div class="fieldset_right">
+		<div class="field_element">
+			<%= form.label :password, form.object.new_record? ? nil : "Change password" %>&nbsp;:&nbsp;<br />
+			<%= form.password_field :password, :class => "textfield" %>
+		</div>
+		<div class="field_element">
+			<%= form.label :password_confirmation%>&nbsp;:&nbsp;<br />
+			<%= form.password_field :password_confirmation, :class => "textfield" %>
+		</div>
+	</div>
+	<div class="clear">&nbsp;</div>
+</fieldset>
+<br />
+<h4 class="toggler"><label for="user_profile">Profile</label></h4>
+<fieldset id="profile" style="display:none;" class="box_toggle">
+	<div class="field_element">
+		<%= form.text_area :profile, :class => 'tinymce' %>
+	</div>
+</fieldset>
+<br />
+<div class="hr">
+	&nbsp;
+</div>
+<div class="submit">
+	<%= form.submit "Save" %>
+</div>

@@ -1,0 +1,27 @@
+<% content_for :head do %>
+	<%= javascript_include_tag 'tiny_mce/tiny_mce', 'tiny-mce-config' %>
+	<%= stylesheet_link_tag 'ui/ui-core', 'ui/ui-theme', 'ui/ui-datepicker', :cache => 'ui' %>
+<% end %>
+<% content_for :header do %>
+	<%= render :partial => 'admin/shared/main_menu' %>
+	<div id="sub_nav">
+		<ul>
+			<li>
+				<%= link_to 'View All Events', admin_events_path, :title => "View all events" %>
+			</li>
+		</ul>
+	</div>
+	<%= error_messages_for :event %>
+	<div id="search_menu">
+		<%= render :partial => 'admin/shared/search/events/non_ajax' %>
+	</div>
+<% end %>
+<div id="sidebar">
+	<%= render :partial => "sidebar" %>
+</div>
+<div id="content">
+	<h3><span class="cat_type">Create A New</span> Event</h3>
+	<% form_for [:admin, @event] do |f| %>
+		<%= render :partial => 'form', :locals => {:f => f} %>
+	<% end %>
+</div>

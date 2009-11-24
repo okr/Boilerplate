@@ -1,0 +1,24 @@
+embed_images: on
+
+package_assets: on
+
+javascript_compressor: closure
+
+javascripts:
+  workspace:
+    - public/javascripts/vendor/jquery.js
+    - public/javascripts/lib/*.js
+    - public/javascripts/views/**/*.js
+
+stylesheets:
+  common:
+    - public/stylesheets/reset.css
+    - public/stylesheets/widgets/*.css
+  workspace:
+    - public/stylesheets/pages/workspace.css
+  empty:
+    - public/stylesheets/pages/empty.css
+
+templates:
+  everything:
+    - app/views/jst/**/*.jst

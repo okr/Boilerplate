@@ -1,0 +1,28 @@
+<div id="description">
+	<h4>Description</h4>
+	<%= sanitize @album.description %>
+</div
+<%- if @album.photos.size > 0 -%>
+<div id="gallery">
+	<div id="fullsize">
+		<%= link_to image_tag(@album.photos.first.image.url(:large)), @album.photos.first.image.url(:original), :rel => 'modal', :title => "#{sanitize(h(@album.photos.first.image.url(:title)))}"%>
+		<span class="message">Click photo to view a full-size version.</span>
+		<%- if @album.photos.first.caption -%>
+		<div id="caption">
+			<p>
+				<%= sanitize(h(@album.photos.first.caption)) %>
+			</p>
+		</div>
+		<%- end -%>
+	</div>
+	<div id="thumbnails">
+		<%= render :partial => 'admin/albums/photos', :collection => @photos %>
+	</div>
+</div>
+<%- end -%>
+<div class="hr">
+	&nbsp;
+</div>
+<div id="timeline_event">
+	<p>Last updated by <%= link_to sanitize(h(@album.user.name)), admin_user_path(@album.user) %> at <%= @album.updated_at %>
+</div>

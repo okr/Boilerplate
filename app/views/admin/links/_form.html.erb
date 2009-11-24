@@ -1,0 +1,29 @@
+<h4 class="toggler">Main Information</h4>
+<fieldset>
+	<div class="fieldset_left">
+		<div class="field_element">
+			<label for="admin">Category&nbsp;:&nbsp;</label>
+			<%= f.collection_select(:link_category_id, @categories, :id, :title, {:prompt => "Choose One"}, :class => "small formElement") %>
+		</div>
+		<div class="field_element">
+			<label for="admin">Admin Link&nbsp;:&nbsp;</label>
+			<%= f.check_box :admin, :class => "checkbox" %>
+		</div>
+	</div>
+	<div class="fieldset_right">
+		<div class="field_element">
+			<label for="link_title">Title</label>
+			<%= f.text_field :title, :class => "textfield" %>
+		</div>
+		<div class="field_element">
+			<label for="link_url">URL</label>
+			<%= f.text_field :url, :class => "textfield" %>
+		</div>
+	</div>
+</fieldset>
+<div class="hr">
+	&nbsp;
+</div>
+<div class="submit">
+	<%= submit_tag 'save', :id => 'create' %>
+</div>

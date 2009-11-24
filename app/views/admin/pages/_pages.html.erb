@@ -1,0 +1,53 @@
+<tr>
+	<td>
+		<%= pages.position %>
+	</td>
+	<td>
+		<%= link_to sanitize(h(pages.name)), admin_page_path(pages) %>
+	</td>
+	<td>
+		<%= pages.page_category.title -%>
+	</td>
+	<td>
+		<%= pages.published %>
+	</td>
+	<td>
+		<%= pages.created_at %>
+	</td>
+	<td>
+		<%= pages.updated_at %>
+	</td>
+	<td>
+ 		<ul class="table_actions">
+			<li>
+				<%= link_to image_tag("/images/icons/shape_square_edit.png"), edit_admin_page_path(pages), :title => "Edit this page." %>
+			</li>
+			<li>
+				<%= link_to image_tag("/images/icons/delete.png"), admin_page_path(pages), :confirm => 'Are you sure?', :method => :delete, :title => "Delete this page." %>
+			</li>
+			<li>
+				<%= link_to image_tag("/images/icons/eye.png"), page_path(pages), :title => "View this page's public page.", :rel => 'external' %>
+			</li>
+			<%- unless pages.first_item? -%>
+			<li>
+				<%= link_to image_tag("/images/icons/bullet_arrow_up.png"), higher_admin_page_path(pages), :method => :put, :title => "Move this page up in position." %>
+			</li>
+			<%- end -%>
+			<%- unless pages.last_item? -%>
+			<li>
+				<%= link_to image_tag("/images/icons/bullet_arrow_down.png"), lower_admin_page_path(pages), :method => :put, :title => "Move this page down in position." %>
+			</li>
+			<%- end -%>
+			<%- unless pages.first_item? -%>
+			<li>
+				<%= link_to image_tag("/images/icons/bullet_arrow_top.png"), top_admin_page_path(pages), :method => :put, :title => "Move this page to the top." %>
+			</li>
+			<%- end -%>
+			<%- unless pages.last_item? -%>
+			<li>
+				<%= link_to image_tag("/images/icons/bullet_arrow_bottom.png"), bottom_admin_page_path(pages), :method => :put, :title => "Move this page to the bottom." %>
+			</li>
+			<%- end -%>
+		</ul>
+	</td>
+</tr>

@@ -1,0 +1,30 @@
+<tr>
+	<td>
+		<%= link_to sanitize(h(events.title)), admin_event_path(events) %>
+	</td>
+	<td>
+		<%= nice_date(events.start)%>
+	</td>
+	<td>
+		<%= nice_date(events.end)%>
+	</td>
+	<td>
+		<%= events.event_category.title -%>
+	</td>
+	<td>
+		<%= events.created_at %>
+	</td>
+	<td>
+		<%= events.updated_at %>
+	</td>
+	<td>
+ 		<ul class="table_actions">
+			<li>
+				<%= link_to image_tag("/images/icons/shape_square_edit.png"), edit_admin_event_path(events), :title => "Edit this event." %>
+			</li>
+			<li>
+				<%= link_to image_tag("/images/icons/delete.png"), admin_event_path(events), :confirm => 'Are you sure?', :method => :delete, :title => "Delete this event." %>
+			</li>
+		</ul>
+	</td>
+</tr>

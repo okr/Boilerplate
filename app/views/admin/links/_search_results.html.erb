@@ -1,0 +1,27 @@
+<% if @link_search.count > 0 %>
+<table class="table" border="0" cellpadding="0" cellspacing="0">
+	<thead class="search">
+		<tr>
+			<th><%= order @link_search, :by => :title %></th>
+			<th><%= order @link_search, :by => :url, :text => "URL" %></th>
+			<th><%= order @link_search, :by => :admin, :text => "Admin" %></th>
+			<th><%= order @link_search, :by => :link_category, :as => "Category" %></th>
+			<th><%= order @link_search, :by => :created_at, :as => "Created" %></th>
+			<th><%= order @link_search, :by => :updated_at, :as => "Updated" %></th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<td colspan="7">
+				<div class="pagination search">
+					<%= will_paginate @link_results, :param_name => :links_page %>
+				</div>
+			</td>
+		</tr>
+	</tfoot>
+	<tbody>
+		<%= render :partial => 'links', :collection => @link_results %>
+	</tbody>
+</table>
+<%- end -%>

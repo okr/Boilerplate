@@ -1,0 +1,27 @@
+<tr>
+	<td>
+		<%= link_to sanitize(h(posts.title)), admin_post_path(posts) %>
+	</td>
+	<td>
+		<%= posts.published %>
+	</td>
+	<td>
+		<%= posts.post_category.title -%>
+	</td>
+	<td>
+		<%= posts.created_at %>
+	</td>
+	<td>
+		<%= posts.updated_at %>
+	</td>
+	<td>
+ 		<ul class="table_actions">
+			<li>
+				<%= link_to image_tag("/images/icons/shape_square_edit.png"), edit_admin_post_path(posts), :title => "Edit this post." %>
+			</li>
+			<li>
+				<%= link_to image_tag("/images/icons/delete.png"), admin_post_path(posts), :confirm => 'Are you sure?', :method => :delete, :title => "Delete this post." %>
+			</li>
+		</ul>
+	</td>
+</tr>

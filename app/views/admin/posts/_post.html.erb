@@ -1,0 +1,35 @@
+<h4 class="toggler">Main Information</h4>
+<div class="attribute_box box_toggle">
+	<div class="attributes_left">
+		<p>
+			<strong>Category</strong> : <%= @post.post_category.title -%>
+		</p>
+		<% if @post.published %>
+		<p>
+			<strong>Published</strong>
+		</p>
+		<% else %>
+		<p>
+			Unpublished
+		</p>
+		<% end %>
+	</div>
+	<div class="attributes_right">
+		<p>
+			<strong>Title</strong> : <%= sanitize(h(@post.title)) %>
+		</p>
+	</div>
+	<div class="clear">&nbsp;</div>
+</div>
+<h4 class="toggler">Body</h4>
+<div class="attribute_box box_toggle">
+	<%= sanitize @post.body %>
+</div>
+<h4 class="toggler">Tags</h4>
+<div class="attribute_box box_toggle">
+	<p>
+		<% for tag in @post.tags %>
+		<%= tag.name %>, 
+		<% end %>
+	</p>
+</div>

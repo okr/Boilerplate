@@ -1,0 +1,28 @@
+<tr class="photo" id="photo_<%= photo.id %>">
+	<td><%= photo.position %></td>
+	<td>
+		<%= f.text_field :title, :class => "title" %>
+	</td>
+	<td>
+		<%= f.text_area :caption, :class => "caption", :size => "30" %>
+	</td>
+	<td>
+		<%- if controller.action_name == "edit" and photo.image.exists? -%>
+		<%= link_to (image_tag photo.image.url(:xsmall)), photo.image.url, :rel => "shadowbox" %>
+		<br />
+		<%- end -%>
+		<%= f.file_field :image, :class => "file_field", :size => "0" %>
+	</td>
+	<td>
+		<ul class="table_actions">
+			<li><%= f.remove_link 'Delete', :title => 'Remove this photo.' %></li>
+			<%- unless photo.position.blank? -%>
+			<%- unless photo.first? -%><li><%= link_to 'Up', higher_admin_page_photo_path(@page, photo), :method => :put, :title => "Move this product photo up in position." %></li><%- end -%>
+			<%- unless photo.last? -%><li><%= link_to 'Down', lower_admin_page_photo_path(@page, photo), :method => :put, :title => "Move this product photo down in position." %></li><%- end -%>
+			<%- unless photo.first? -%><li><%= link_to 'Top', top_admin_page_photo_path(@page, photo), :method => :put, :title => "Move this product photo to the top." %></li><%- end -%>
+			<%- unless photo.last? -%><li><%= link_to 'Bottom', bottom_admin_page_photo_path(@page, photo), :method => :put, :title => "Move this product photo to the bottom." %></li><%- end -%>
+			<%- end -%>
+		</ul>
+    </td>
+</tr>
+
