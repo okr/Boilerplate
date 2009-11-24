@@ -2,3 +2,7 @@ log/*.log
 tmp/**/*
 doc/api
 doc/app
+public/system
+Rakefile
+lib/.DS_Store
+.DS_Store
