@@ -6,3 +6,8 @@ public/system
 Rakefile
 lib/.DS_Store
 .DS_Store
+boilerplate.esproj/
+Gemfile.rb
+preinitializer.rb
+db/development.sqlite3
+db/production.sqlite3
