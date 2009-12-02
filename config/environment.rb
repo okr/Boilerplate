@@ -41,19 +41,16 @@ Rails::Initializer.run do |config|
 	config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
 	config.gem 'googlebase', :lib => 'google/base'
 	config.gem 'rugalytics'
-	#config.gem 'javan-whenever'
 	config.gem 'josevalim-simple_form', :lib => 'simple_form', :source => "http://gems.github.com"
 	config.gem 'justinfrench-formtastic', :lib => 'formtastic', :source  => 'http://gems.github.com'
 	config.gem 'pauldix-feedzirra', :lib => 'feedzirra', :source  => 'http://gems.github.com'
 	config.gem 'shuber-sortable', :lib => 'sortable', :source => 'http://gems.github.com'
 	config.gem 'thoughtbot-shoulda', :lib => 'shoulda', :source => 'http://gems.github.com'
-	config.gem 'sanitize'
 	config.gem 'giraffesoft-resource_controller', :lib => 'resource_controller', :source => 'http://gems.github.com'
 	config.gem 'giraffesoft-is_taggable', :lib => 'is_taggable', :source => 'http://gems.github.com'
 	config.gem 'giraffesoft-timeline_fu', :lib => 'timeline_fu', :source => 'http://gems.github.com'
 	config.gem 'friendly_id', :lib => 'friendly_id'
 	config.gem "thoughtbot-factory_girl", :lib => "factory_girl", :source => "http://gems.github.com"
-	config.gem 'wysihat-engine', :source => 'http://gemcutter.org'
 	config.gem 'jammit', :source => 'http://gemcutter.org'
 
   # Only load the plugins named here, in the order given. By default, all plugins 

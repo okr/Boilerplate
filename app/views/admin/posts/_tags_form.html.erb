@@ -7,7 +7,7 @@
 	<li>
 		<span class="tag_delete">
 			<%- unless tag.object.new_record? -%>
-			<%= tag.check_box :_delete, :class => "tip", :title => "Mark this tag for deletion." %>
+			<%= tag.check_box :_destroy, :class => "tip", :title => "Mark this tag for deletion." %>
 			<%- else -%>
 			<a href="#deleteTag" class="removeChild" title="Remove this tag.">
 				<%= image_tag("/images/icons/delete.png") %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091101190357) do
+ActiveRecord::Schema.define(:version => 20091021070010) do
 
   create_table "albums", :force => true do |t|
     t.string   "title"
@@ -214,14 +214,5 @@ ActiveRecord::Schema.define(:version => 20091101190357) do
   add_index "users", ["name"], :name => "index_users_on_name"
   add_index "users", ["password_reset_token"], :name => "index_users_on_password_reset_token"
   add_index "users", ["role_id"], :name => "index_users_on_role_id"
-
-  create_table "wysihat_files", :force => true do |t|
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
-    t.datetime "file_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end
