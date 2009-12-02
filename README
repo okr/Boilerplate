@@ -15,3 +15,6 @@ To Do
 - add js based help hints for admin forms
 - add basic front end template
 - add admin site preferences controller/actions/views
+- convert view templates to HAML format
+
+after you setup the database.yml file, run rake db:migrate and, rake db:seed to test it out
