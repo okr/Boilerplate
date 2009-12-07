@@ -1,4 +1,4 @@
-class Site < ActiveRecord::Base
+class Preference < ActiveRecord::Base
     validates_presence_of :title, :message => ": Site title cannot be left blank."
 	validates_presence_of :tagline, :message => ": Site tagline cannot be left blank."
 	validates_uniqueness_of :title, :message => ": This site title has been taken.."
@@ -8,5 +8,5 @@ class Site < ActiveRecord::Base
 	
 	belongs_to :user
 	
-	fires :new_site, :on => [:create, :update], :actor => :user
+	fires :new_preference, :on => [:create, :update], :actor => :user
 end
