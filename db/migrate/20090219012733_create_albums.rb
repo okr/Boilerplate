@@ -3,6 +3,7 @@ class CreateAlbums < ActiveRecord::Migration
     create_table :albums do |t|
 		t.string :title
 		t.string :description
+		t.string :cached_slug
 		t.references :user
 
 		t.timestamps

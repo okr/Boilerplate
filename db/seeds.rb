@@ -251,3 +251,15 @@
 	else
 		puts "#{post_two.errors}"
 	end
+	
+	site = Site.new
+	site.title = Settings.site_name
+	site.tagline = Settings.site_tagline
+	site.blog_title = "Boilerplate Blog"	
+	site.user = admin_user
+	
+	if site.save!
+    	puts "Site Created."
+	else
+		puts "#{site.errors}"
+	end

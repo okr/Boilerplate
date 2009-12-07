@@ -1,10 +1,11 @@
 class AddSitePrefs < ActiveRecord::Migration
   def self.up
       create_table :site_preferences do |t|
+        t.string   :title
+        t.string   :tagline
         t.string   :blog_title
-        t.string   :site_title
-        t.string   :site_tagline
         t.string   :analytics_key
+        t.references :user
         
         t.timestamps
       end

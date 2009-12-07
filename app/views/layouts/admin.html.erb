@@ -16,8 +16,8 @@
 	<body>
 		<% flash.each do |key, msg| %>
 			<% content_tag :script, :type => "text/javascript" do %>
-				jQuery(document).ready(function() {
-					jQuery.jGrowl("<%= msg %>", {
+				$(document).ready(function() {
+					$.jGrowl("<%= msg %>", {
 						header: "<%= key.to_s.capitalize %>",
 						theme: "<%= key %>",
 						sticky: false,

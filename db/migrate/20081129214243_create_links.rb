@@ -5,6 +5,7 @@ class CreateLinks < ActiveRecord::Migration
 			t.string :url
 			t.boolean :admin, :default => false
 			t.references :user
+			t.string :cached_slug
 			t.references :link_category
 
 			t.timestamps

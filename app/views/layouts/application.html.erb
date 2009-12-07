@@ -16,6 +16,7 @@
 			<div id="header">
 				<h1><%= Settings.site_name %></h1>
 				<%= yield :header %>
+				<%= render :partial => 'shared/main_menu' %>
 			</div>
 			<div id="container">
 				<%= yield  %>

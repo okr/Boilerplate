@@ -1,38 +1,27 @@
-<div id="page">
-	<div id="body">
-		<h3>Contact</h3>
-		<div id="contact_form">
-			<% form_for @contact_form, :url => { :action => "create", :controller => "contact" } do |f| %>
-				<fieldset>
-					<div class="field_element">
-						<label for="contact_form_name">Name</label>
-						<%= f.text_field :name, :class => "textfield" %>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div class="field_element">
-						<label for="contact_form_email">Email</label>
-						<%= f.text_field :email, :class => "textfield" %>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div class="field_element">
-						<label for="contact_form_message">Message</label>
-						<%= f.text_area :message, :class => "regular_textarea", :size => 20 %>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div class="submit">
-						<%= submit_tag 'Send', :id => 'create' %>
-					</div>
-				</fieldset>
-			<% end %>
-		</div>
-	</div>
-	<div id="page_gallery">
-		<img src="/images/contact/contact.jpg" width="305" height="415" alt="Contact">
-	</div>
-</div>
-<div id="nav">
-	<%= render :partial => "shared/nav" %>
+<div id="contact_form">
+	<% form_for @contact_form, :url => { :action => "create", :controller => "contact" } do |f| %>
+		<fieldset>
+			<div class="field_element">
+				<label for="contact_form_name">Name</label>
+				<%= f.text_field :name, :class => "textfield" %>
+			</div>
+		</fieldset>
+		<fieldset>
+			<div class="field_element">
+				<label for="contact_form_email">Email</label>
+				<%= f.text_field :email, :class => "textfield" %>
+			</div>
+		</fieldset>
+		<fieldset>
+			<div class="field_element">
+				<label for="contact_form_message">Message</label>
+				<%= f.text_area :message, :class => "regular_textarea", :size => 20 %>
+			</div>
+		</fieldset>
+		<fieldset>
+			<div class="submit">
+				<%= submit_tag 'Send', :id => 'create' %>
+			</div>
+		</fieldset>
+	<% end %>
 </div>

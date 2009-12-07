@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration
 			t.text :body
 			t.boolean :published, :default => false
 			t.references :user
+			t.string :cached_slug
 			t.references :post_category
 
 			t.timestamps

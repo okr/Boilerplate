@@ -8,6 +8,7 @@ class CreateEvents < ActiveRecord::Migration
 		t.string :description
 		t.datetime :start
 		t.datetime :end
+		t.string :cached_slug
 		t.references :user
 		t.references :event_category
 		

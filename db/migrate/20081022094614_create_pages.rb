@@ -8,6 +8,7 @@ class CreatePages < ActiveRecord::Migration
 		t.boolean :published, :default => false
 		t.boolean :home, :default => false
 		t.references :user
+		t.string :cached_slug
 		t.references :page_category
 
       t.timestamps

@@ -20,6 +20,7 @@ class CreateUsers < ActiveRecord::Migration
 		t.string    :current_login_ip
 		t.string    :last_login_ip
 		t.references   :role
+		t.string :cached_slug
 		t.string   :avatar_file_name
 		t.string   :avatar_content_type
 		t.integer  :avatar_file_size

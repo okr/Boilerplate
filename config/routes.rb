@@ -1,8 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-    
-    map.resources :wysihat_files
-    
-    Jammit::Routes.draw(map)
 
 	map.root :controller => "home", :action => "index"
 
@@ -11,6 +7,11 @@ ActionController::Routing::Routes.draw do |map|
 
 	map.resource :user_session
 	
+	#Contact Form Routing
+	map.contact "contact", :controller => "contact", :action => "new"
+	map.resource :contact_form, :controller => "contact"
+	
+	#Static Page Routing
 	map.resources :page, :only => [:index, :show], :shallow => true, :has_many => [:tags, :albums] 
 	
 	#Blog Routing
@@ -24,6 +25,9 @@ ActionController::Routing::Routes.draw do |map|
 	
 	#Photo Routing
 	map.resources :albums, :only => [:index, :show], :has_many => :photos
+	
+	#Jammit Asset Packaging Routing
+    Jammit::Routes.draw(map)
 
 	#Admin Area Routing
 	map.namespace :admin do |admin|
@@ -55,6 +59,9 @@ ActionController::Routing::Routes.draw do |map|
 		
 		#Tags Routing
 		admin.resources :tags, :only => :index
+		
+		#Site Preferences Routing
+	    admin.resources :sites, :only => [:index, :show, :edit]
 	end
 
 end
