@@ -1,6 +1,6 @@
 class AddSitePrefs < ActiveRecord::Migration
   def self.up
-      create_table :site_preferences do |t|
+      create_table :preferences do |t|
         t.string   :title
         t.string   :tagline
         t.string   :blog_title

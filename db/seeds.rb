@@ -252,7 +252,7 @@
 		puts "#{post_two.errors}"
 	end
 	
-	site = Site.new
+	site = Preference.new
 	site.title = Settings.site_name
 	site.tagline = Settings.site_tagline
 	site.blog_title = "Boilerplate Blog"	

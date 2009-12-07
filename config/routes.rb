@@ -61,7 +61,7 @@ ActionController::Routing::Routes.draw do |map|
 		admin.resources :tags, :only => :index
 		
 		#Site Preferences Routing
-	    admin.resources :sites, :only => [:index, :show, :edit]
+	    admin.resources :preferences, :only => [:index, :show, :edit]
 	end
 
 end

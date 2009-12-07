@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(:version => 20091202083301) do
   create_table "albums", :force => true do |t|
     t.string   "title"
     t.string   "description"
+    t.string   "cached_slug"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20091202083301) do
     t.string   "description"
     t.datetime "start"
     t.datetime "end"
+    t.string   "cached_slug"
     t.integer  "user_id"
     t.integer  "event_category_id"
     t.datetime "created_at"
@@ -59,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20091202083301) do
     t.string   "url"
     t.boolean  "admin",            :default => false
     t.integer  "user_id"
+    t.string   "cached_slug"
     t.integer  "link_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -75,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20091202083301) do
     t.boolean  "published",        :default => false
     t.boolean  "home",             :default => false
     t.integer  "user_id"
+    t.string   "cached_slug"
     t.integer  "page_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -106,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20091202083301) do
     t.text     "body"
     t.boolean  "published",        :default => false
     t.integer  "user_id"
+    t.string   "cached_slug"
     t.integer  "post_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -113,6 +118,16 @@ ActiveRecord::Schema.define(:version => 20091202083301) do
 
   add_index "posts", ["published"], :name => "index_posts_on_published"
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+
+  create_table "preferences", :force => true do |t|
+    t.string   "title"
+    t.string   "tagline"
+    t.string   "blog_title"
+    t.string   "analytics_key"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -131,15 +146,6 @@ ActiveRecord::Schema.define(:version => 20091202083301) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
-
-  create_table "site_preferences", :force => true do |t|
-    t.string   "blog_title"
-    t.string   "site_title"
-    t.string   "site_tagline"
-    t.string   "analytics_key"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "slugs", :force => true do |t|
     t.string   "name"
@@ -202,6 +208,7 @@ ActiveRecord::Schema.define(:version => 20091202083301) do
     t.string   "current_login_ip"
     t.string   "last_login_ip"
     t.integer  "role_id"
+    t.string   "cached_slug"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

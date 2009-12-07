@@ -1770,7 +1770,7 @@ ul.standard li.pagination a.prev_page:hover {
 	width: auto;
 	float: none;
 	clear: none;
-	margin: 0 0 0 310px;
+	margin: 0 0 0 300px;
 }
 
 #content p {
@@ -1887,6 +1887,21 @@ ul.standard li.pagination a.prev_page:hover {
 	border-bottom: 1px solid #fff;
 }
 
+#content_centered h4 {
+	margin: 10px 20px 0;
+	padding: 5px 10px;
+	color: #fff;
+	font-size: 15px;
+	line-height: 20px;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
+	font-variant: normal;
+	text-align: left;
+	background-color: #000;
+	border-bottom: 1px solid #fff;
+}
+
 #content_left {
 	display: block;
 	position: relative;
@@ -1968,7 +1983,20 @@ ul.standard li.pagination a.prev_page:hover {
 	margin: 0 20px 20px 0;
 }
 
-#content .attribute_box p {
+#content_centered .attribute_box {
+	padding: 20px;
+	display: block;
+	position: relative;
+	border-width: 0;
+	border-style: none;
+	clear: none;
+	float: none;
+	width: auto;
+	background-color: #eee;
+	margin: 0 20px 20px;
+}
+
+.attribute_box p {
 	margin: 0;
 	padding: 0 0 10px;
 	display: block;
@@ -1982,7 +2010,7 @@ ul.standard li.pagination a.prev_page:hover {
 	text-align: left;
 }
 
-#content .attribute_box p strong {
+.attribute_box p strong {
 	padding: 0;
 	margin: 0 0 5px;
 	display: inline;
@@ -1992,7 +2020,7 @@ ul.standard li.pagination a.prev_page:hover {
 	font: normal normal normal 14px/16px Georgia, "Times New Roman", Times, serif;
 }
 
-#content .attribute_box .attributes_left {
+.attribute_box .attributes_left {
 	float: left;
 	display: block;
 	position: relative;
@@ -2002,7 +2030,7 @@ ul.standard li.pagination a.prev_page:hover {
 	padding: 0;
 }
 
-#content .attribute_box .attributes_right {
+.attribute_box .attributes_right {
 	position: relative;
 	float: right;
 	display: block;
