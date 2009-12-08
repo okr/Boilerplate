@@ -2,16 +2,20 @@
 <fieldset id="main_info" class="box_toggle">
 	<div class="fieldset_left">
 		<div class="field_element">
-			<%= form.label :avatar %>&nbsp;:&nbsp;<br />
-			<div id="avatar">
-			<%- if controller.action_name == "edit" and form.object.avatar.exists? -%>
-				<%= link_to (image_tag form.object.avatar.url(:small)), form.object.avatar.url, :class => "modal preview" %>
+			<%= form.label :photo %>&nbsp;:&nbsp;<br />
+			<% form.fields_for :photo do |p| %>
+				<% if @user.photo.image.exists? %>
+				<div id="avatar">
+					<%= link_to image_tag(@user.photo.image.url(:thumb)), @user.photo.image.url, :class => "modal" %>
+					<br />
+					<%= link_to "Crop", crop_admin_user_path(@user), :class => "crop" %>
+				</div>
+				<% end %>
+				<%= p.file_field :image %><br />
 				<br />
-				<%= link_to "Crop", crop_admin_user_path(@user), :class => "crop" %>
-			<%- end -%>
-			</div>
-			<br />
-			<%= form.file_field :avatar, :class => "file_field formElement", :size => "0" %>
+				<%= p.label :photo_title %>&nbsp;:&nbsp;<br />
+				<%= p.text_field :title, :class => "textfield small" %>
+			<% end %>
 		</div>
 	</div>
 	<div class="fieldset_right">

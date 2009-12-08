@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20091202083301) do
     t.string   "title"
     t.string   "description"
     t.string   "cached_slug"
+    t.integer  "photos_count", :default => 0
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -97,12 +98,17 @@ ActiveRecord::Schema.define(:version => 20091202083301) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "photos_count",       :default => 0
-    t.integer  "album_id"
+    t.integer  "crop_x"
+    t.integer  "crop_y"
+    t.integer  "crop_w"
+    t.integer  "crop_h"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "photos", ["attachable_id", "attachable_type"], :name => "index_photos_on_attachable_id_and_attachable_type"
   add_index "photos", ["position"], :name => "index_photos_on_position"
 
   create_table "posts", :force => true do |t|
@@ -209,14 +215,6 @@ ActiveRecord::Schema.define(:version => 20091202083301) do
     t.string   "last_login_ip"
     t.integer  "role_id"
     t.string   "cached_slug"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.integer  "crop_x"
-    t.integer  "crop_y"
-    t.integer  "crop_w"
-    t.integer  "crop_h"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

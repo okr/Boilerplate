@@ -4,6 +4,7 @@ class CreateAlbums < ActiveRecord::Migration
 		t.string :title
 		t.string :description
 		t.string :cached_slug
+		t.integer  :photos_count, :default => 0
 		t.references :user
 
 		t.timestamps

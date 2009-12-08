@@ -4,9 +4,8 @@ class Album < ActiveRecord::Base
 	validates_length_of :title, :within => 2..60, :too_long => ": Please pick a shorter title.", :too_short => ": Please pick a longer title"
 	validates_exclusion_of :title, :in => ["admin, administrator, public, publisher"], :message => ": That name is reserved, please choose another."
 	validates_length_of :description, :within => 0..120, :too_long => ": Please pick a shorter description.", :too_short => ": Please pick a longer description"
-	
-	belongs_to :attachable, :polymorphic => true
-	has_many :photos, :dependent => :destroy
+
+	has_many :photos, :dependent => :destroy, :as => :attachable
 	
 	belongs_to :user
 	

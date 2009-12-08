@@ -1,9 +1,11 @@
 <h4 class="toggler">Main Information</h4>
 <div class="attribute_box box_toggle">
 	<div class="attributes_left">
+		<% if @user.photo %>
 		<p id="avatar">
-			<%= link_to image_tag(@user.avatar.url(:small)), @user.avatar.url, :class => "modal" %>
+			<%= link_to image_tag(@user.photo.image.url(:thumb)), @user.photo.image.url, :class => "modal" %>
 		</p>
+		<% end %>
 	</div>
 	<div class="attributes_right">
 		<p>

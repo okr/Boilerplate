@@ -32,25 +32,14 @@ class User < ActiveRecord::Base
 	has_many :posts
 	has_many :post_categories
 
+	has_one :photo, :dependent => :destroy, :as => :attachable
+	
+	accepts_nested_attributes_for :photo, :allow_destroy => true
+
 	belongs_to :role
 	
 	attr_accessor :role_name
 	
-	has_attached_file :avatar, :styles => {
-								:small => {:geometry => "100x100#", :processors => [:cropper]},
-								:large => {:geometry => "500x500>"}
-							},
-								:default_url => "/images/missing_image_:style.png",
-								:whiny_thumbnails => true
-                 
-	validates_attachment_content_type(:avatar, { :content_type => [ 'image/gif', 'image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg', 'image/jpg' ] })
-	validates_attachment_size(:avatar, { :in => 0.06..1.5.megabyte, :message => ": All image files must be larger than 60k and smaller than 1.5 megabytes."})
-	
-	attr_protected :avatar_file_name, :avatar_content_type, :avatar_size
-	attr_accessor :x, :y
-	after_update :reprocess_avatar, :if => :cropping?
-	
-
 	def deliver_password_reset_instructions!
 		reset_perishable_token!
 		UserMailer.deliver_password_reset_instructions(self)
@@ -59,32 +48,5 @@ class User < ActiveRecord::Base
 	def role_name
 		Role.find(self.role_id).name
 	end
-	
-	def cropping?  
-        !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?  
-    end
-    
-    def self.x
-        unless crop_x.blank?
-            return '0'
-        end
-    end
-    
-    def self.y
-        unless crop_y.blank?
-            return '0'
-        end
-    end
-
-    def avatar_geometry(style = :original)
-        @geometry ||= {}
-        @geometry[style] ||= Paperclip::Geometry.from_file(avatar.path(style))
-    end
-
-    private
-
-    def reprocess_avatar
-        avatar.reprocess!
-    end
 
 end

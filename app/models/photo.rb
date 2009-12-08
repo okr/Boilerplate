@@ -1,12 +1,13 @@
 class Photo < ActiveRecord::Base
 	
-	sortable :order => :position, :scope => :album_id
-
-	belongs_to :album
+	sortable :order => :position, :scope => [:attachable_id, :attachable_type]
+	
+	belongs_to :attachable, :polymorphic => true
 
 	validates_presence_of :title, :message => ": Photo title cannot be blank."
 	validates_uniqueness_of :title, :message => ": Photo title already taken."
 	validates_length_of :title, :within => 2..60, :too_long => ": Please pick a shorter photo title.", :too_short => ": Please pick a longer photo title"
+	#validates_length_of :caption, :within => 0..200, :too_long => ": Please pick a shorter photo caption.", :too_short => ": Please pick a longer photo caption"
 	validates_exclusion_of :title, :in => ["admin, administrator"], :message => ": That name is reserved, please choose another."
 
 	has_attached_file :image, :styles => {
@@ -14,7 +15,7 @@ class Photo < ActiveRecord::Base
 								:thumb=> {:geometry => "100x100#", :processors => [:cropper], :file_type =>  :jpg},
 								:medium => {:geometry => "200x200#", :processors => [:cropper], :file_type =>  :jpg},
 								:large => {:geometry => "300x300#", :processors => [:cropper], :file_type =>  :jpg},
-								:crop => {:geometry => "500x500>"}
+								:large => {:geometry => "500x500>"}
 							},
 								:default_url => "/images/missing_image_:style.png",
 								:whiny_thumbnails => true
@@ -26,23 +27,35 @@ class Photo < ActiveRecord::Base
 	
 	is_taggable :tags
 
-	attr_protected :image_file_name, :image_content_type, :image_size
-	attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+	#attr_protected :image_file_name, :image_content_type, :image_size
+	attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :x, :y
 	after_update :reprocess_image, :if => :cropping?
 
-	def cropping?
-	  !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
-	end
+	def cropping?  
+        !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?  
+    end
+    
+    def self.x
+        unless crop_x.blank?
+            return '0'
+        end
+    end
+    
+    def self.y
+        unless crop_y.blank?
+            return '0'
+        end
+    end
 
-	def image_geometry(style = :original)
-	  @geometry ||= {}
-	  @geometry[style] ||= Paperclip::Geometry.from_file(photo.path(style))
-	end
+    def image_geometry(style = :original)
+        @geometry ||= {}
+        @geometry[style] ||= Paperclip::Geometry.from_file(image.path(style))
+    end
 
-	private
+    private
 
-	def reprocess_image
-	  photo.reprocess!
-	end
+    def reprocess_image
+        image.reprocess!
+    end
 
 end

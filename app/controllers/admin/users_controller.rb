@@ -21,6 +21,7 @@ class Admin::UsersController < ApplicationController
 		@user = User.new
 		@users = User.paginate :page => params[:users_page], :per_page => 6
 		@user_results = @user_search.all.paginate :page => params[:search_page], :per_page => 6
+		 @user.photo.build
 		@roles = Role.find(:all)
 		
 		@page_title << "Create A New User"
@@ -47,7 +48,7 @@ class Admin::UsersController < ApplicationController
 	end
 
 	def show
-	@user = User.find(params[:id], :include => :role)
+	@user = User.find(params[:id], :include => [:role, :photo])
 	@users = User.paginate :page => params[:users_page], :per_page => 6
 	@user_results = @user_search.all.paginate :page => params[:search_page], :per_page => 6
 
@@ -60,10 +61,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id], :include => :role)
+    @user = User.find(params[:id], :include => [:role, :photo])
 	@users = User.paginate :page => params[:users_page], :per_page => 6
 	@user_results = @user_search.all.paginate :page => params[:search_page], :per_page => 6
     @roles = Role.find(:all)
+    @user.build_photo if @user.photo.blank?
 	@page_title << " - Editing - " + @user.name
     
     respond_to do |format|
