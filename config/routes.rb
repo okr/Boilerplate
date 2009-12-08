@@ -38,7 +38,7 @@ ActionController::Routing::Routes.draw do |map|
 			:request_password_reset => :post,
 			:edit_password => :get,
 			:update_password => :put
-		}, :member => { :crop => :get, :update_avatar => :put }
+		}, :member => { :crop => :get, :update_photo => :put }
 
 		#Static Pages Routes
 		admin.resources :pages, :member => { :higher => :put, :lower => :put, :top => :put, :bottom => :put }, :has_many => [:albums, :tags]

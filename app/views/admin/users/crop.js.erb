@@ -21,7 +21,7 @@ jQuery(function() {
 				});
 			});
 		<% end %>
-	    //jQuery(document).find("#avatar a.modal.preview img").append('<%= escape_javascript(@user.avatar.url(:small)) %>');
+	    //jQuery(document).find("#avatar a.modal.preview img").append('<%= escape_javascript(@user.photo.image.url(:small)) %>');
     }); 
 
     jQuery('#cropform').ajaxForm({
@@ -32,7 +32,7 @@ jQuery(function() {
   jQuery('#cropbox').Jcrop({
     onChange: update_crop,
     onSelect: update_crop,
-    setSelect: [ <%= @user.crop_x %>, <%= @user.crop_y %>, <%= @user.crop_w %>, <%= @user.crop_h %> ],
+    setSelect: [ <%= @user.photo.crop_x %>, <%= @user.photo.crop_y %>, <%= @user.photo.crop_w %>, <%= @user.photo.crop_h %> ],
     aspectRatio: 1
   });
  
@@ -43,13 +43,13 @@ function update_crop(coords) {
     var ry = 100 / coords.h;
 
     jQuery('#preview').css({
-    	width: Math.round(rx * <%= @user.avatar_geometry(:large).width %>) + 'px',
-    	height: Math.round(ry * <%= @user.avatar_geometry(:large).height %>) + 'px',
+    	width: Math.round(rx * <%= @user.photo.image_geometry(:large).width %>) + 'px',
+    	height: Math.round(ry * <%= @user.photo.image_geometry(:large).height %>) + 'px',
     	marginLeft: '-' + Math.round(rx * coords.x) + 'px',
     	marginTop: '-' + Math.round(ry * coords.y) + 'px'
     });
 
-    //var ratio = <%= @user.avatar_geometry(:original).width %> / <%= @user.avatar_geometry(:large).width %>;
+    //var ratio = <%= @user.photo.image_geometry(:original).width %> / <%= @user.photo.image_geometry(:large).width %>;
 
     //jQuery('#crop_x').val(Math.floor(coords.x * ratio));
     //jQuery('#crop_y').val(Math.floor(coords.y * ratio));
@@ -65,14 +65,16 @@ function update_crop(coords) {
 </script>
 <div id="cropper">
     <div style="width:100px; height:100px; overflow:hidden">
-    	<%= image_tag @user.avatar.url(:large), :id => "preview" %>
+    	<%= image_tag @user.photo.image.url(:large), :id => "preview" %>
     </div>
-    <% form_for [:admin, @user], :url => update_avatar_admin_user_path(@user), :html => { :id => "cropform", :multipart => true, :method => :put } do |f| %>
-    	<%= image_tag @user.avatar.url(:large), :id => "cropbox" %>
+    <% form_for [:admin, @user], :url => update_photo_admin_user_path(@user), :html => { :id => "cropform", :multipart => true, :method => :put } do |f| %>
+    	<%= image_tag @user.photo.image.url(:large), :id => "cropbox" %>
+    	<% f.fields_for :photo do |p| %>
     	<% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
-    		<%= f.text_field attribute, :id => attribute %>
+    		<%= p.text_field attribute, :id => attribute %>
     	<% end %>
-    	<% unless @user.avatar.blank? %>
+    	<% end %>
+    	<% unless @user.photo.blank? %>
     	<div class="submit">
     		<%= f.submit "Crop", :id => "cropsubmit" %>
     	</div>

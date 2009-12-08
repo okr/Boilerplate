@@ -145,23 +145,23 @@ class Admin::UsersController < ApplicationController
 	end
 	
 	def crop
-	    @user = User.find(params[:id])
+	    @user = User.find(params[:id], :include => :photo)
 
         respond_to do |format|
             format.js { render :layout => false, :object => @user }
         end
 	end
 	
-	def update_avatar
-	    @user = User.find(params[:id])
+	def update_photo
+	    @user = User.find(params[:id], :include => :photo)
 
         if @user.update_attributes(params[:user])
-          flash.now[:notice] = "User avatar cropped successfully!"
+          flash.now[:notice] = "User photo cropped successfully!"
           respond_to do |format|
               format.js { render :action => "crop", :layout => false }
           end
         else
-            flash.now[:error] = "User avatar could not be cropped."
+            flash.now[:error] = "User photo could not be cropped."
             respond_to do |format|
                 format.js { render :action => "crop", :layout => false }
             end
