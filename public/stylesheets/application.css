@@ -778,56 +778,60 @@ form .submit {
 
 .submit input {
 	margin: 0 10px 0 0;
-	padding: 5px 10px;
+	padding: 5px 15px;
 	display: inline-block;
 	position: relative;
-	background-color: #fff;
+	background-color: #eee;
 	text-align: center;
 	color: #666;
 	border: 1px solid #ccc;
 	text-decoration: none;
-	font: normal normal normal 13px/16px Georgia, "Times New Roman", Times, serif;
+	font: normal normal normal 14px/16px Georgia, "Times New Roman", Times, serif;
 	width: auto;
+	text-transform: capitalize;
 }
 
 .submit input:hover {
 	margin: 0 10px 0 0;
-	padding: 5px 10px;
+	padding: 5px 15px;
 	display: inline-block;
 	position: relative;
-	background-color: #fff;
+	background-color: #cc3333;
 	text-align: center;
-	color: #cc3333;
+	color: #fff;
 	border: 1px solid #cc3333;
 	text-decoration: none;
-	font: normal normal normal 13px/16px Georgia, "Times New Roman", Times, serif;
+	font: normal normal normal 14px/16px Georgia, "Times New Roman", Times, serif;
 	width: auto;
+	text-transform: capitalize;
 }
 
 .submit a {
 	margin: 0;
-	padding: 5px 10px;
+	padding: 5px 15px;
 	display: inline-block;
 	position: relative;
-	background-color: #fff;
+	background-color: #eee;
 	text-align: left;
 	color: #666;
 	border: 1px solid #ccc;
 	text-decoration: none;
-	font: normal normal normal 13px/16px Georgia, "Times New Roman", Times, serif;
+	font: normal normal normal 14px/16px Georgia, "Times New Roman", Times, serif;
+	text-transform: capitalize;
 }
 
 .submit a:hover {
 	margin: 0;
-	padding: 5px 10px;
+	padding: 5px 15px;
 	display: inline-block;
 	position: relative;
-	background-color: #fff;
+	background-color: #CC3333;
 	text-align: left;
-	color: #CC3333;
+	color: #fff;
 	border: 1px solid #cc3333;
 	text-decoration: none;
-	font: normal normal normal 13px/16px Georgia, "Times New Roman", Times, serif;
+	font: normal normal normal 14px/16px Georgia, "Times New Roman", Times, serif;
+	text-transform: capitalize;
 }
 
 #content form h3 {

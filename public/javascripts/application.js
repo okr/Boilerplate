@@ -361,6 +361,9 @@ $(document).ready(function(){
 		return(true);
 	} else {
 		$("#sub_nav ul li a").corner("round 10px");
+		$(".submit input").corner("round 5px");
+		$(".submit button").corner("round 5px");
+		$(".submit a").corner("round 5px");
 		$("#login_form").corner("round 10px");
 		$("#search_menu .search_button .spyglass").corner("round 5px tl bl");
 		$("#search_menu .search_button .toggle_search").corner("round 5px tr br");
