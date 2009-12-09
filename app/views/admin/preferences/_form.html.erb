@@ -1,0 +1,34 @@
+<h4>Site Information</h4>
+<fieldset class="fieldset_toggle">
+	<div class="fieldset_left">
+		<div class="field_element">
+		  <label for="preference_title">Title&nbsp;:&nbsp;</label>
+		  <%= f.text_field :title, :class => 'textfield medium' %>
+		</div>
+		<div class="field_element">
+		  <label for="preference_tagline">Tagline&nbsp;:&nbsp;</label>
+		  <%= f.text_field :tagline, :class => 'textfield medium' %>
+		</div>
+	</div>
+	<div class="fieldset_right">
+		<div class="field_element">
+		  <label for="preference_blog_title">Blog Title&nbsp;:&nbsp;</label>
+		  <%= f.text_field :blog_title, :class => 'textfield medium' %>
+		</div>
+	</div>
+	<div class="clear">&nbsp;</div>
+</fieldset>
+<br />
+<h4><label for="article_body">Google Analytics</label></h4>
+<fieldset class="fieldset_toggle">
+	<div class="field_element">
+		<label for="preference_analytics_key">Key&nbsp;:&nbsp;</label>
+		<%= f.text_field :analytics_key, :class => 'textfield medium' %>
+	</div>
+</fieldset>
+<div class="hr">
+	&nbsp;
+</div>
+<div class="submit">
+  <%= submit_tag 'save', :id => 'create' %><%= link_to 'cancel', admin_preferences_url %>
+</div>

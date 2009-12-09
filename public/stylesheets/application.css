@@ -677,20 +677,29 @@ a.logo {
 #content form {
 	display: block;
 	position: relative;
+	float: none;
+	clear: none;
+	padding: 0;
 	margin: 0 10px 0 0;
+}
+
+#content_centered form {
+	display: block;
+	position: relative;
+	margin: 20px;
 	float: none;
 	clear: none;
 	padding: 0;
 }
 
-#content form .field_element {
+form .field_element {
 	padding: 0;
 	margin: 0 0 10px;
 	display: block;
 	position: relative;
 }
 
-#content form a.addChild {
+form a.addChild {
 	padding: 5px 10px;
 	display: inline-block;
 	position: relative;
@@ -707,7 +716,7 @@ a.logo {
 	margin: 0;
 }
 
-#content form a.addChild:hover {
+form a.addChild:hover {
 	padding: 5px 10px;
 	display: inline-block;
 	position: relative;
@@ -724,8 +733,7 @@ a.logo {
 	margin: 0;
 }
 
-#content form fieldset {
-	padding: 20px;
+form fieldset {
 	display: block;
 	position: relative;
 	border-width: 0;
@@ -735,9 +743,10 @@ a.logo {
 	width: auto;
 	background-color: #eee;
 	margin: 0 0 20px;
+	padding: 20px;
 }
 
-#content form fieldset .fieldset_left {
+form fieldset .fieldset_left {
 	float: left;
 	display: block;
 	position: relative;
@@ -747,7 +756,7 @@ a.logo {
 	padding: 0;
 }
 
-#content form fieldset .fieldset_right {
+form fieldset .fieldset_right {
 	position: relative;
 	float: right;
 	display: block;
@@ -834,7 +843,7 @@ form .submit {
 	text-transform: capitalize;
 }
 
-#content form h3 {
+form h3 {
 	margin: 0 0 10px;
 	padding: 0;
 	color: #000;
@@ -849,8 +858,7 @@ form .submit {
 	border-bottom-style: none;
 }
 
-#content form h4 {
-	margin: 0;
+#content form h4, #content_centered form h4 {
 	padding: 5px 10px;
 	color: #fff;
 	font-size: 15px;
@@ -862,6 +870,7 @@ form .submit {
 	text-align: left;
 	background-color: #000;
 	border-bottom: 1px solid #fff;
+	margin: 0;
 }
 
 form fieldset label {
@@ -897,6 +906,19 @@ form fieldset input.textfield {
 	width: 650px;
 	font: normal normal normal 13px/16px Georgia, "Times New Roman", Times, serif;
 	margin: 0 0 10px;
+}
+
+form fieldset input.textfield.medium {
+	padding: 5px;
+	display: block;
+	position: relative;
+	background-color: #fff;
+	color: #333;
+	text-decoration: none;
+	border: 1px solid #ccc;
+	width: 400px;
+	font: normal normal normal 13px/16px Georgia, "Times New Roman", Times, serif;
+	margin: 3px 0 10px;
 }
 
 form fieldset input.textfield.small {

@@ -2,7 +2,9 @@
 	<%= render :partial => 'admin/shared/main_menu' %>
 	<div id="sub_nav">
 		<ul>
-			<li></li>
+			<li>
+				<%= link_to "Edit", edit_admin_preference_path(@preference), :title => "Edit site preferences." %>
+			</li>
 		</ul>
 	</div>
 <% end %>

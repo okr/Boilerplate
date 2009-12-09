@@ -1,0 +1,19 @@
+<% content_for :header do %>
+	<%= render :partial => 'admin/shared/main_menu' %>
+	<div id="sub_nav">
+		<ul>
+			<li>
+				<%= link_to 'View Preferences', admin_preferences_path %>
+			</li>
+		</ul>
+	</div>
+	<%= error_messages_for :preference %>
+<% end %>
+<div id="content_centered">
+	<h3>
+		Editing Site Preferences
+	</h3>
+	<% form_for [:admin, @preference], :action => 'update' do |f| -%>
+		<%= render :partial => 'form', :locals => {:f => f} %>
+	<% end %>
+</div>
