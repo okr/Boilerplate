@@ -1,64 +1,64 @@
 <h4 class="toggler">Main Information</h4>
-<fieldset id="main_info" class="box_toggle">
+<fieldset class="fieldset_toggle">
 	<div class="fieldset_left">
 		<div class="field_element">
-			<%= form.label :photo %>&nbsp;:&nbsp;<br />
-			<% form.fields_for :photo do |p| %>
+			<%= f.label :photo %>&nbsp;:&nbsp;<br />
+			<% f.fields_for :photo do |p| %>
 				<% if @user.photo.image.exists? %>
 				<div id="avatar">
 					<%= link_to image_tag(@user.photo.image.url(:thumb)), @user.photo.image.url, :class => "modal" %>
-					<%= link_to "Crop", crop_admin_user_path(@user), :class => "crop" %>
+					<div class="submit">
+						<%= link_to "Crop", crop_admin_user_path(@user), :class => "crop" %>
+					</div>
 				</div>
-				<br />
 				<% end %>
-				<%= p.file_field :image %><br />
-				<br />
-				<%= p.label :photo_title %>&nbsp;:&nbsp;<br />
+				<%= p.label :photo_title %>&nbsp;:&nbsp;
 				<%= p.text_field :title, :class => "textfield small" %>
+				<%= p.file_field :image, :size => 0 %>
 			<% end %>
 		</div>
 	</div>
 	<div class="fieldset_right">
 		<div class="field_element">
-			<%= form.label :name %>&nbsp;:&nbsp;<br />
-			<%= form.text_field :name, :class => "textfield" %>
+			<%= f.label :name %>&nbsp;:&nbsp;<br />
+			<%= f.text_field :name, :class => "textfield" %>
 		</div>
 		<div class="field_element">
-			<%= form.label :login %>&nbsp;:&nbsp;<br />
-			<%= form.text_field :login, :class => "textfield" %>
+			<%= f.label :login %>&nbsp;:&nbsp;<br />
+			<%= f.text_field :login, :class => "textfield" %>
 		</div>
 		<div class="field_element">
-			<%= form.label :email %>&nbsp;:&nbsp;<br />
-			<%= form.text_field :email, :class => "textfield" %>
+			<%= f.label :email %>&nbsp;:&nbsp;<br />
+			<%= f.text_field :email, :class => "textfield" %>
 		</div>
 	</div>
 	<div class="clear">&nbsp;</div>
 </fieldset>
 <br />
 <h4 class="toggler">Password &amp; Role</h4>
-<fieldset id="password_and_role" style="display:none;" class="box_toggle">
+<fieldset style="display:none;" class="fieldset_toggle">
 	<div class="fieldset_left">
 		<div class="field_element">
-			<%= form.label :role_id %>&nbsp;:&nbsp;<%= form.collection_select(:role_id, @roles, :id, :name, {:prompt   => "Select a Role"}) %>
+			<%= f.label :role_id %>&nbsp;:&nbsp;<%= f.collection_select(:role_id, @roles, :id, :name, {:prompt   => "Select a Role"}) %>
 		</div>
 	</div>
 	<div class="fieldset_right">
 		<div class="field_element">
-			<%= form.label :password, form.object.new_record? ? nil : "Change password" %>&nbsp;:&nbsp;<br />
-			<%= form.password_field :password, :class => "textfield" %>
+			<%= f.label :password, f.object.new_record? ? nil : "Change password" %>&nbsp;:&nbsp;<br />
+			<%= f.password_field :password, :class => "textfield" %>
 		</div>
 		<div class="field_element">
-			<%= form.label :password_confirmation%>&nbsp;:&nbsp;<br />
-			<%= form.password_field :password_confirmation, :class => "textfield" %>
+			<%= f.label :password_confirmation%>&nbsp;:&nbsp;<br />
+			<%= f.password_field :password_confirmation, :class => "textfield" %>
 		</div>
 	</div>
 	<div class="clear">&nbsp;</div>
 </fieldset>
 <br />
 <h4 class="toggler"><label for="user_profile">Profile</label></h4>
-<fieldset id="profile" style="display:none;" class="box_toggle">
+<fieldset style="display:none;" class="fieldset_toggle">
 	<div class="field_element">
-		<%= form.text_area :profile, :class => 'tinymce' %>
+		<%= f.text_area :profile, :class => 'tinymce' %>
 	</div>
 </fieldset>
 <br />
@@ -66,5 +66,5 @@
 	&nbsp;
 </div>
 <div class="submit">
-	<%= form.submit "Save" %>
+	<%= f.submit "Save" %>
 </div>

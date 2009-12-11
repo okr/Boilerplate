@@ -10,9 +10,7 @@
 	<%= error_messages_for :preference %>
 <% end %>
 <div id="content_centered">
-	<h3>
-		Editing Site Preferences
-	</h3>
+	<h3>Editing <span class="cat_type">Site Preferences</span></h3>
 	<% form_for [:admin, @preference], :action => 'update' do |f| -%>
 		<%= render :partial => 'form', :locals => {:f => f} %>
 	<% end %>

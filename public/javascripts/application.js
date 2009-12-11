@@ -121,7 +121,7 @@ $(document).ready(function(){
 	});
 	
 	$(".toggler").click(function () {
-        $(this).next(".box_toggle").toggle();
+        $(this).next(".fieldset_toggle").toggle();
     });
 	
 	//initialize datepicker

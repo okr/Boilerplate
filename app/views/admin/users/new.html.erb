@@ -21,6 +21,6 @@
 <div id="content">
 	<h3><span class="cat_type">Create A New</span> User</h3>
 	<% form_for [:admin, @user], :html => { :multipart => true, :method => :put } do |f| %>
-		<%= render :partial => "form", :object => f %>
+		<%= render :partial => "form", :locals => {:f => f} %>
 	<% end %>
 </div>

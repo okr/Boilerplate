@@ -1,7 +1,7 @@
 <% content_for :jstemplates do -%>
   <%= "var object='#{ generate_template(f, :tags) }'" %>
 <% end %>
-<h4>General Properties</h4>
+<h4 class="toggler">General Properties</h4>
 <fieldset class="fieldset_toggle">
 	<div class="fieldset_left">
 		<div class="field_element">
@@ -21,14 +21,14 @@
 	</div>
 </fieldset>
 <br />
-<h4><label for="article_body">Body</label></h4>
+<h4 class="toggler"><label for="article_body">Body</label></h4>
 <fieldset class="fieldset_toggle">
 	<div class="field_element">
 	  <%= f.text_area :body, :class => "tinymce" %>
 	</div>
 </fieldset>
 <br />
-<h4>Tagging</h4>
+<h4 class="toggler">Tagging</h4>
 <fieldset class="fieldset_toggle">
 	<div class="field_element">
 		<%= render :partial => 'tags_form', :locals => {:f => f} %>

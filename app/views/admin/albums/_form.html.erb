@@ -4,20 +4,25 @@
 <% content_for :jstemplates do -%>
   <%= "var object='#{ generate_template(f, :photos) }'" %>
 <% end %>
-<fieldset>
-	<div class="field_element">
-		<label for="album_title">Title</label>
-		<%= f.text_field :title, :class => "textfield" %>
+<h4 class="toggler">General Properties</h4>
+<fieldset class="fieldset_toggle" style="display:none;">
+	<div class="fieldset_left">
+		<div class="field_element">
+			<label for="album_title">Title&nbsp;:&nbsp;</label>
+			<%= f.text_field :title, :class => "textfield small" %>
+		</div>
 	</div>
-	<div class="field_element">
-		<label for="album_description">Description</label>
-		<%= f.text_area :description %>
-	</div>
-	<h4>Photos</h4>
-	<div class="field_element" id="gallery_form">
-		<%= render :partial => 'photos_form', :locals => {:f => f} %>
+	<div class="fieldset_right">
+		<div class="field_element">
+			<label for="album_description">Description&nbsp;:&nbsp;</label>
+			<%= f.text_area :description, :class => "tinymce" %>
+		</div>
 	</div>
 </fieldset>
+<div class="clear">&nbsp;</div>
+<div class="field_element" id="gallery_form">
+	<%= render :partial => 'photos_form', :locals => {:f => f} %>
+</div>
 <div class="hr">
 	&nbsp;
 </div>

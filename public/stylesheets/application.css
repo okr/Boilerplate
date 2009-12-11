@@ -929,7 +929,7 @@ form fieldset input.textfield.small {
 	color: #333;
 	text-decoration: none;
 	border: 1px solid #ccc;
-	width: 100px;
+	width: 200px;
 	font: normal normal normal 13px/16px Georgia, "Times New Roman", Times, serif;
 	margin: 3px 0 10px;
 }
@@ -1859,11 +1859,11 @@ ul.standard li.pagination a.prev_page:hover {
 	font-weight: normal;
 	font-style: normal;
 	text-decoration: none;
-	padding: 0 0 5px;
+	padding: 10px 20px;
 	position: relative;
 	margin: 0;
 	display: block;
-	text-align: center;
+	text-align: left;
 	color: #000;
 	border-bottom: 1px solid #eee;
 	line-height: 28px;

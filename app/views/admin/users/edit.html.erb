@@ -48,6 +48,6 @@
 		</ul>
 	</div>
 	<% form_for [:admin, @user], :url => admin_user_path, :html => { :multipart => true, :method => :put } do |f| %>
-		<%= render :partial => "form", :object => f %>
+		<%= render :partial => "form", :locals => {:f => f} %>
 	<% end %>
 </div>
