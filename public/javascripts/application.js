@@ -114,8 +114,6 @@ $(document).ready(function(){
         'easingChange': "easeInOutQuart"
     });
 
-	setTimeout(hideFlashes, 2000);
-
 	$("a.toplink").click(function(){ 
 		$.scrollTo('#header', 300);
 	});
@@ -350,8 +348,13 @@ $(document).ready(function(){
 		var new_id = new Date().getTime();
 		var childArea = this.rel;
 		$("#" + childArea).append( object.replace(/NEW_RECORD/g, new_id) );
+		$("#" + childArea + " tr").mouseover(function(){$(this).addClass("over");}).mouseout(function(){$(this).removeClass("over");});
+		$("#" + childArea + " tr:even").addClass("alt");
+		$("#" + childArea + " td").mouseover(function(){$(this).addClass("over");}).mouseout(function(){$(this).removeClass("over");});
+		$("#" + childArea + " td:even").addClass("alt");
+		$.scrollTo("#" + childArea, 300);
 		$("#" + childArea).children().find(".removeChild").click( function() {
-			$(this).parent().parent().remove();
+			$(this).parent().parent().parent().parent().remove();
 		});
 	});
 	
@@ -375,7 +378,3 @@ $(document).ready(function(){
 	    $("#footer").corner("round 10px bottom");
 	}
 })
-
-var hideFlashes = function() {
-	$('p.notice, p.warning, p.error, p.alert').hide("slide", { direction: "up" }, 600);
-}

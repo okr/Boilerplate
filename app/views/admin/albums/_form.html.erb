@@ -1,11 +1,11 @@
 <% content_for :head do %>
-	<%= stylesheet_link_tag 'ui/ui-core', 'ui/ui-theme', 'ui/ui-datepicker', :cache => 'ui' %>
+    <%= javascript_include_tag 'tiny_mce/tiny_mce' %>
 <% end %>
 <% content_for :jstemplates do -%>
-  <%= "var object='#{ generate_template(f, :photos) }'" %>
+	<%= "var object='#{ generate_template(f, :photos) }'" %>
 <% end %>
 <h4 class="toggler">General Properties</h4>
-<fieldset class="fieldset_toggle" style="display:none;">
+<fieldset class="fieldset_toggle">
 	<div class="fieldset_left">
 		<div class="field_element">
 			<label for="album_title">Title&nbsp;:&nbsp;</label>
@@ -19,18 +19,14 @@
 		</div>
 	</div>
 </fieldset>
-<div class="clear">&nbsp;</div>
+<br />
 <div class="field_element" id="gallery_form">
 	<%= render :partial => 'photos_form', :locals => {:f => f} %>
 </div>
+<div class="clear">&nbsp;</div>
 <div class="hr">
 	&nbsp;
 </div>
-<% if controller.action_name == "edit" %>
-<div id="timeline_event">
-	<p>Last updated by <%= link_to sanitize(h(@album.user.name)), admin_user_path(@album.user) %> at <%= @album.updated_at %>
-</div>
-<% end %>
 <div class="submit">
 	<%= submit_tag 'save', :id => 'create' %><%= link_to 'cancel', admin_albums_url %>
 </div>

@@ -699,40 +699,6 @@ form .field_element {
 	position: relative;
 }
 
-form a.addChild {
-	padding: 5px 10px;
-	display: inline-block;
-	position: relative;
-	background-color: #fff;
-	text-align: left;
-	font-size: 13px;
-	line-height: 16px;
-	color: #666;
-	border: 1px solid #ccc;
-	font-variant: normal;
-	text-decoration: none;
-	font-weight: normal;
-	font-style: normal;
-	margin: 0;
-}
-
-form a.addChild:hover {
-	padding: 5px 10px;
-	display: inline-block;
-	position: relative;
-	background-color: #fff;
-	text-align: left;
-	font-size: 13px;
-	line-height: 16px;
-	color: #CC3333;
-	border: 1px solid #cc3333;
-	font-variant: normal;
-	text-decoration: none;
-	font-weight: normal;
-	font-style: normal;
-	margin: 0;
-}
-
 form fieldset {
 	display: block;
 	position: relative;
@@ -930,6 +896,19 @@ form fieldset input.textfield.small {
 	text-decoration: none;
 	border: 1px solid #ccc;
 	width: 200px;
+	font: normal normal normal 13px/16px Georgia, "Times New Roman", Times, serif;
+	margin: 3px 0 10px;
+}
+
+.photo.copyForm td input.textfield.small {
+	padding: 5px;
+	display: block;
+	position: relative;
+	background-color: #fff;
+	color: #333;
+	text-decoration: none;
+	border: 1px solid #ccc;
+	width: 250px;
 	font: normal normal normal 13px/16px Georgia, "Times New Roman", Times, serif;
 	margin: 3px 0 10px;
 }

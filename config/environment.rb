@@ -9,6 +9,7 @@ RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
+require 'rack'
 
 #Load application and environment specific constants
 #raw_config = File.read(RAILS_ROOT + "/config/config.yml")
@@ -53,6 +54,7 @@ Rails::Initializer.run do |config|
 	config.gem 'friendly_id', :lib => 'friendly_id'
 	config.gem "thoughtbot-factory_girl", :lib => "factory_girl", :source => "http://gems.github.com"
 	config.gem 'jammit', :source => 'http://gemcutter.org'
+	config.gem "rack"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -62,7 +64,7 @@ Rails::Initializer.run do |config|
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
   
-  %w(observers sweepers mailers).each do |dir|
+  %w(observers sweepers mailers middleware).each do |dir|
     config.load_paths << "#{RAILS_ROOT}/app/#{dir}"
   end
 
@@ -87,6 +89,7 @@ Rails::Initializer.run do |config|
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
   # (create the session table with "rake db:sessions:create")
+  #ActionController::Dispatcher.middleware.insert_before(ActionController::Session::CookieStore, FlashSessionCookieMiddleware, ActionController::Base.session_options[:key])
   config.action_controller.session_store = :active_record_store
 
   # Use SQL instead of Active Record's schema dumper when creating the test database.
