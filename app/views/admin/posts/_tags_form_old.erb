@@ -1,0 +1,29 @@
+<% content_for :head do %>
+<script type="text/javascript" charset="utf-8">
+
+jQuery(function() {
+    $("input[type=text]").autoSuggest("<%= admin_tags_path %>", {minChars: 2, matchCase: false});
+})
+
+</script>
+<% end %>
+<ul class="submenu childArea" id="tags-form">
+	<li>
+		<a href="#addTag" class="addChild" rel="tags-form">Add a tag</a>
+		<a name="addPhoto"></a>
+	</li>
+	<% f.fields_for :tags do |tag| %>
+	<li>
+		<span class="tag_delete">
+			<%- unless tag.object.new_record? -%>
+			<%= tag.check_box :_destroy, :class => "tip", :title => "Mark this tag for deletion." %>
+			<%- else -%>
+			<a href="#deleteTag" class="removeChild" title="Remove this tag.">
+				<%= image_tag("/images/icons/delete.png") %>
+			</a>
+			<%- end -%>
+		</span>
+		<%= tag.autocomplete_field(:tag_id, :url => admin_tags_path) %>
+	</li>
+	<% end %>
+</ul>
