@@ -5,17 +5,17 @@
 ENV['RAILS_ENV'] ||= 'development'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
-require 'rack'
 
 #Load application and environment specific constants
 #raw_config = File.read(RAILS_ROOT + "/config/config.yml")
 #APP_CONFIG = YAML.load(raw_config)[RAILS_ENV]
 
 Rails::Initializer.run do |config|
+
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
@@ -34,27 +34,23 @@ Rails::Initializer.run do |config|
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
-
-  	config.gem 'authlogic'
+  
+    config.gem 'authlogic'
 	config.gem 'searchlogic'
 	config.gem 'settingslogic'
 	config.gem 'haml'
 	config.gem 'paperclip', :source => 'http://gemcutter.org'
 	config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
-	config.gem 'googlebase', :lib => 'google/base'
-	config.gem 'rugalytics'
 	config.gem 'josevalim-simple_form', :lib => 'simple_form', :source => "http://gems.github.com"
 	config.gem 'justinfrench-formtastic', :lib => 'formtastic', :source  => 'http://gems.github.com'
 	config.gem 'pauldix-feedzirra', :lib => 'feedzirra', :source  => 'http://gems.github.com'
 	config.gem 'shuber-sortable', :lib => 'sortable', :source => 'http://gems.github.com'
 	config.gem 'thoughtbot-shoulda', :lib => 'shoulda', :source => 'http://gems.github.com'
-	config.gem 'giraffesoft-resource_controller', :lib => 'resource_controller', :source => 'http://gems.github.com'
-	config.gem 'giraffesoft-is_taggable', :lib => 'is_taggable', :source => 'http://gems.github.com'
+	config.gem "acts-as-taggable-on", :lib => 'acts-as-taggable-on', :source => "http://gemcutter.org"
 	config.gem 'giraffesoft-timeline_fu', :lib => 'timeline_fu', :source => 'http://gems.github.com'
 	config.gem 'friendly_id', :lib => 'friendly_id'
-	config.gem "thoughtbot-factory_girl", :lib => "factory_girl", :source => "http://gems.github.com"
+	config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'
 	config.gem 'jammit', :source => 'http://gemcutter.org'
-	config.gem "rack"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

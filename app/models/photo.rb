@@ -3,6 +3,8 @@ class Photo < ActiveRecord::Base
 	sortable :order => :position, :scope => [:attachable_id, :attachable_type]
 	
 	belongs_to :attachable, :polymorphic => true
+	
+	is_taggable :tags
 
 	validates_presence_of :title, :message => ": Photo title cannot be blank."
 	validates_uniqueness_of :title, :message => ": Photo title already taken."
@@ -24,8 +26,6 @@ class Photo < ActiveRecord::Base
 	validates_attachment_presence(:image, :message => ": You need to include an image file to upload a photo." )                  
 	validates_attachment_content_type(:image, { :content_type => [ 'image/gif', 'image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg', 'image/jpg' ] })
 	validates_attachment_size(:image, { :in => 0.06..1.5.megabyte, :message => ": All image files must be larger than 60k and smaller than 1.5 megabytes."})
-	
-	is_taggable :tags
 
 	#attr_protected :image_file_name, :image_content_type, :image_size
 	attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :x, :y

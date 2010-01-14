@@ -11,3 +11,7 @@ Gemfile.rb
 preinitializer.rb
 db/development.sqlite3
 db/production.sqlite3
+vendor/gems/gems
+vendor/gems/specifications
+vendor/gems/doc
+vendor/gems/environment.rb

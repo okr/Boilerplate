@@ -3940,12 +3940,12 @@ div.jGrowl div.jGrowl-notification.error {
 #gallery_form {
 	display: block;
 	position: relative;
-	width: 100%;
+	width: 970px;
 	margin: 0;
 	float: left;
 	clear: none;
-	border-top: 1px solid #eee;
-	padding: 10px 0 20px;
+	padding: 10px 0 0;
+	background-color: #fff;
 }
 
 #fullsize {

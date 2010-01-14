@@ -269,20 +269,10 @@ $(document).ready(function(){
 	});
 	
 	$('a.toggle_search').toggleSearch();
-	
-    // $.ifixpng('/images/pixel.gif');
 
 	$("a[rel=external]").attr("target", "blank");
-	
-    $("a").tooltip({
-      effect: 'fade',
-      delay: 0,
-      opacity: .7,
-      position: 'bottom center',
-      offset: [10, -20],
-      relative: true,
-      cancelDefault: false
-     });
+
+    $("a").tipTip();
  
 	$('#thumbnails div.thumb a').live('click', function() {
 		var imageSource = this.href;
@@ -348,13 +338,10 @@ $(document).ready(function(){
 		var new_id = new Date().getTime();
 		var childArea = this.rel;
 		$("#" + childArea).append( object.replace(/NEW_RECORD/g, new_id) );
-		$("#" + childArea + " tr").mouseover(function(){$(this).addClass("over");}).mouseout(function(){$(this).removeClass("over");});
-		$("#" + childArea + " tr:even").addClass("alt");
-		$("#" + childArea + " td").mouseover(function(){$(this).addClass("over");}).mouseout(function(){$(this).removeClass("over");});
-		$("#" + childArea + " td:even").addClass("alt");
+		$("input.tags-input").autocomplete("tags");
 		$.scrollTo("#" + childArea, 300);
 		$("#" + childArea).children().find(".removeChild").click( function() {
-			$(this).parent().parent().parent().parent().remove();
+			$(this).parent().parent().remove();
 		});
 	});
 	

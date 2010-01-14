@@ -19,11 +19,13 @@
 		</div>
 	</div>
 </fieldset>
-<br />
-<div class="field_element" id="gallery_form">
-	<%= render :partial => 'photos_form', :locals => {:f => f} %>
-</div>
 <div class="clear">&nbsp;</div>
+<h4 class="toggler">Upload Photos</h4>
+<fieldset class="fieldset_toggle" id="gallery_form">
+	<%= render :partial => 'photos_form', :locals => {:f => f} %>
+</fieldset>
+<div class="clear">&nbsp;</div>
+<br />
 <div class="hr">
 	&nbsp;
 </div>

@@ -1,5 +1,4 @@
 class Admin::PostsController < ApplicationController
-    auto_complete_for :tag, :name, :collection_instance_variable => :tags
 	before_filter :require_admin_user, :load_search, :page_title
 	skip_after_filter :add_google_analytics_code
 	layout 'admin'
@@ -50,15 +49,6 @@ class Admin::PostsController < ApplicationController
 		@post = Post.new(params[:post])
 		
 		@post.user = current_user
-		
-		if params[:post][:home] == "1"
-			for post in Post.homepost.all
-				if post.home == true
-					post.update_attributes(:home => "false")
-				end
-			end
-			@post.update_attributes(:home => params[:home])
-		end
 
 		respond_to do |format|
 			if @post.save       
@@ -78,7 +68,7 @@ class Admin::PostsController < ApplicationController
 	def edit
 		session[:return_to] = request.request_uri
 		@posts_results = @post_search.all
-		@post = Post.find(params[:id])
+		@post = Post.find(params[:id], :include => :tags)
 		@posts = Post.paginate :page => params[:blog_page], :per_page => 12
 		@page_title << " - Editing - " + @post.title
 
@@ -89,20 +79,10 @@ class Admin::PostsController < ApplicationController
 	end
 
 	def update
-		params[:product][:photo_attributes] ||= {} unless params[:product].nil?
 
 		@post = Post.find(params[:id])
 		
 		@post.user = current_user
-		
-		if params[:post][:home] == "1"
-			for post in Post.homepost.all
-				if post.home == true
-					post.update_attributes(:home => "false")
-				end
-			end
-			@post.update_attributes(:home => params[:home])
-		end
 
 		respond_to do |format|
 			if @post.update_attributes(params[:post])

@@ -4,10 +4,12 @@ class Admin::TagsController < ApplicationController
 	layout 'admin'
 	
     def index
-        @tags = Tag.all
+       ActiveRecord::Base.include_root_in_json = false
+        
+        @tags = Tag.search(:name_like => params[:q]).all
         
         respond_to do |format|
-            format.js
+            format.json { render :text => @tags.to_json(:only => [:id, :name]) }
         end 
 	end
 	

@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+    acts_as_taggable_on :tags
+
 	named_scope :published, :conditions => {:published => true}
 	named_scope :recent, :conditions => ["created_at || updated_at >= ?", 1.month.ago], :order => "created_at DESC", :limit => 10
 
@@ -15,9 +17,5 @@ class Post < ActiveRecord::Base
 	has_friendly_id :title, :use_slug => true, :strip_diacritics => true
 	
 	fires :new_post, :on => [:create, :update], :actor => :user
-	
-	is_taggable :tags
-	
-	accepts_nested_attributes_for :tags, :limit => 20, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
 
 end
