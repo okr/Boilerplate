@@ -1,18 +1,14 @@
 <% content_for :head do %>
 	<%= javascript_include_tag 'tiny_mce/tiny_mce', 'tiny-mce-config' %>
 	<script type="text/javascript">
-        $(document).ready(function () {
-            
-            //$(".tag-input").autoSuggest("<%= admin_tags_path %>", {minChars: 2, matchCase: false, selectedItem: "name", searchObj: "name", queryParam:"search"});
-            
-            $(".tag-input").fcbkcomplete({
-                json_url: "<%= admin_tags_path %>",
-                cache: true,
-                filter_case: false,
-                filter_hide: true,
-                filter_selected: true,
-                newel: true
-            });
+        $(document).ready(function () {           
+            $(".tag-input").autocomplete("<%= admin_tags_path %>", properties = { 
+				matchContains: true,
+				minChars: 2,
+				selectFirst: false, 
+				intro_text: "Type Name", 
+				no_result: "No Names"
+			});
         });
     </script>
 <% end %>

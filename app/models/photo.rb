@@ -4,7 +4,7 @@ class Photo < ActiveRecord::Base
 	
 	belongs_to :attachable, :polymorphic => true
 	
-	is_taggable :tags
+	acts_as_taggable_on :tags
 
 	validates_presence_of :title, :message => ": Photo title cannot be blank."
 	validates_uniqueness_of :title, :message => ": Photo title already taken."
