@@ -29,7 +29,8 @@
 <div class="attribute_box box_toggle">
 	<p>
 		<% for tag in @post.tags %>
-		<%= tag.name %>, 
+		<div class="tag"><%= tag.name %></div>
 		<% end %>
+		<div class="clear">&nbsp;</div>
 	</p>
 </div>

@@ -1,16 +1,5 @@
 <% content_for :head do %>
 	<%= javascript_include_tag 'tiny_mce/tiny_mce', 'tiny-mce-config' %>
-	<script type="text/javascript">
-        $(document).ready(function () {           
-            $(".tag-input").autocomplete("<%= admin_tags_path %>", properties = { 
-				matchContains: true,
-				minChars: 2,
-				selectFirst: false, 
-				intro_text: "Type Name", 
-				no_result: "No Names"
-			});
-        });
-    </script>
 <% end %>
 <% content_for :header do %>
 	<%= render :partial => 'admin/shared/main_menu' %>

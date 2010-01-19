@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base  
 	layout "application"
 	helper :all
-	before_filter :correct_safari_and_ie_accept_headers, :current_user, :dev_authenticate
+	before_filter :current_user, :dev_authenticate
 	filter_parameter_logging :password, :password_confirmation, :old_password
 	skip_after_filter :add_google_analytics_code
 
@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
 		@pages = Page.published.all(:conditions => {:home => false})
 	end
 	
-	def correct_safari_and_ie_accept_headers
-		request.accepts.sort!{ |x, y| y.to_s == 'application/xml' ? 1 : -1 } if request.xhr?
-	end
+	#def correct_safari_and_ie_accept_headers
+		#request.accepts.sort!{ |x, y| y.to_s == 'application/xml' ? 1 : -1 } if request.xhr?
+	#end
 
 	protected
 

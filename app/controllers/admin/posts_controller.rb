@@ -24,10 +24,10 @@ class Admin::PostsController < ApplicationController
 		@post_results = @post_search.all(:include => :tags).paginate :page => params[:blog_page], :per_page => 12
 		
 		respond_to do |format|
-			format.html
 			format.js { 
 				render :partial => "search_results", :layout => false
 			}
+    	    format.html
 		end
 	end
 

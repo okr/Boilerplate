@@ -1,9 +1,9 @@
 (function($) {
 	$.ajaxSetup({ 
-		beforeSend: function(xhr) {
-			xhr.setRequestHeader("Accept", "text/javascript, text/html, application/xml, text/xml, application/x-json, */*");
-			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		},
+//		beforeSend: function(xhr) {
+//			xhr.setRequestHeader("Accept", "text/javascript, text/html, application/xml, text/xml, application/x-json, */*");
+//			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//		},
 		success: function(response, status){
 			$.unblockUI();
 		}
@@ -175,18 +175,13 @@ $(document).ready(function(){
 		success: function(){
 			$(".table tr").mouseover(function(){$(this).addClass("over");}).mouseout(function(){$(this).removeClass("over");});
 			$(".table tr:even").addClass("alt");
-			$('.tip').tooltip({
-				track: true,
-				delay: 0,
-				showURL: false,
-				showBody: " - "
-			});
+			$('.tip').tipTip();
 			if($.browser.msie) {
 				return(true);
 			} else {
-				$("#search_menu .search_button .spyglass").corners("5px transparent top-left 5px transparent bottom-left")
-				$("#search_menu .search_button .toggle_search").corners("5px transparent top-right 5px transparent bottom-right")
-				$(".search_count, #search_menu form #advanced_search fieldset .field_element").corners("5px transparent");
+				$("#search_menu .search_button .spyglass").corner("round 5px tl bl");
+				$("#search_menu .search_button .toggle_search").corner("round 5px tr br");
+				$(".search_count, #search_menu form #advanced_search fieldset .field_element").corner("round 5px");
 			}
 			$.unblockUI();
 			$.scrollTo('#search_results', 300);
@@ -228,14 +223,7 @@ $(document).ready(function(){
 		$('#search_results').ajaxComplete(function() {
 			$(".table tr").mouseover(function(){$(this).addClass("over");}).mouseout(function(){$(this).removeClass("over");});
 			$(".table tr:even").addClass("alt");
-			$('.table a').tooltip({
-				track: true,
-				delay: 0,
-				showURL: false,
-				showBody: " - ",
-				fixPNG: true,
-				fade: 300
-			});
+			$('.table a').tipTip();
 		});
 		return false;
 	});
@@ -256,14 +244,7 @@ $(document).ready(function(){
 		$('#recent_activity').ajaxComplete(function() {
 			$(".table tr").mouseover(function(){$(this).addClass("over");}).mouseout(function(){$(this).removeClass("over");});
 			$(".table tr:even").addClass("alt");
-			$('.table a').tooltip({
-				track: true,
-				delay: 0,
-				showURL: false,
-				showBody: " - ",
-				fixPNG: true,
-				fade: 300
-			});
+			$('.table a').tipTip();
 		});
 		return false;
 	});
@@ -307,14 +288,7 @@ $(document).ready(function(){
 			$("#fullsize a").attr({href: imageOriginal, title: imageTooltip}).append(this);
 			$("#fullsize #caption p").remove();
 			$("#fullsize #caption").append(imageCaption);
-			$("#fullsize a").tooltip({
-				track: true,
-				delay: 0,
-				showURL: false,
-				showBody: " - ",
-				fixPNG: true,
-				fade: 300
-			});
+			$("#fullsize a").tipTip();
 			$("#fullsize a img").fadeIn("slow");
 			$("#fullsize #caption").show();
 			$("a[rel=modal]").fancybox({

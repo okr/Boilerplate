@@ -4242,6 +4242,7 @@ div.jGrowl div.jGrowl-notification.error {
 	position: relative;
 	border-width: 0;
 	border-style: none;
+	background-color: #000;
 }
 
 #search_menu form #advanced_search fieldset .field_element {
@@ -4640,4 +4641,21 @@ div.jGrowl div.jGrowl-notification.error {
 	display: block;
 	position: relative;
 	margin: 5px 5px 5px 0;
+}
+
+.tag {
+	margin: 0 5px;
+	padding: 4px 8px;
+	display: block;
+	position: relative;
+	float: left;
+	background-color: #ddd;
+	color: #797979;
+	font-size: 12px;
+	line-height: 14px;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
+	font-variant: normal;
+	border: 1px solid #fff;
 }
