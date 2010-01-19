@@ -5,8 +5,8 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 		<title><%= Preference.first.title %> | Admin <%= @page_title %></title>
-		<%= stylesheet_link_tag 'application', 'fancy_box/jquery.fancybox-1.2.5', 'field_error_proc.css', 'jquery.jgrowl', 'tipTip' , :cache => 'admin' %>
-		<%= javascript_include_tag 'jquery-1.4.min', 'jquery-ui-1.7.2.custom.min', 'tiny_mce/jquery.tinymce', 'jquery.corner', 'jquery.hoverIntent.minified', 'jquery.blockUI', 'jquery.jgrowl', 'jquery.cycle.all', 'jquery.livequery', 'jquery.countable', 'jquery.tipTip', 'jquery.form', 'jquery.scrollTo-1.4.2-min', 'fancybox', 'jquery.ba-bbq.min', 'application', :cache => 'admin' %>
+		<%= stylesheet_link_tag 'application', 'fancy_box/jquery.fancybox-1.2.6', 'field_error_proc.css', 'jquery.jgrowl', 'tipTip', :cache => 'admin' %>
+		<%= javascript_include_tag 'jquery', 'jquery-ui-1.7.2.custom.min', 'tiny_mce/jquery.tinymce', 'jquery.corner', 'jquery.hoverIntent.minified', 'jquery.blockUI', 'jquery.jgrowl', 'jquery.cycle.all', 'jquery.livequery', 'jquery.countable', 'jquery.tipTip', 'jquery.form', 'jquery.scrollTo-1.4.2-min', 'jquery.fancybox-1.2.6', 'jquery.ba-bbq', 'application', :cache => 'admin' %>
 		<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 		<% javascript_tag do %>
 			<%= yield(:jstemplates) %>

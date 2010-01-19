@@ -1,40 +1,29 @@
 <link href="/stylesheets/Jcrop/jquery.Jcrop.css" media="screen" rel="stylesheet" type="text/css" />
-<script src="/javascripts/jquery.Jcrop.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery.Jcrop.js" type="text/javascript"></script>
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
 
-jQuery(function() {
-    jQuery().ajaxStart(function(){
-        jQuery.blockUI();
-    });
+$(function() {
+    //$().ajaxStart(function(){
+       // $.blockUI();
+    //});
 
-    jQuery().ajaxComplete(function(){
-        //jQuery.fn.fancybox.close();
-        <% flash.each do |key, msg| %>
-			jQuery(document).ready(function() {
-				jQuery.jGrowl("<%= msg %>", {
-					header: "<%= key.to_s.capitalize %>",
-					theme: "<%= key %>",
-					sticky: false,
-					corners: '10px',
-					life: 6000
-				});
-			});
-		<% end %>
-	    //jQuery(document).find("#avatar a.modal.preview img").append('<%= escape_javascript(@user.photo.image.url(:small)) %>');
-    }); 
+    //$().ajaxComplete(function(){
+        //$.fn.fancybox.close();
+	    //$(document).find("#avatar a.modal.preview img").append('<%= escape_javascript(@user.photo.image.url(:small)) %>');
+    //}); 
 
-    jQuery('#cropform').ajaxForm({
+    $.('#cropform').ajaxForm({
         target: '#cropper'
     });
     
     
-  jQuery('#cropbox').Jcrop({
-    onChange: update_crop,
-    onSelect: update_crop,
-    setSelect: [ <%= @user.photo.crop_x %>, <%= @user.photo.crop_y %>, <%= @user.photo.crop_w %>, <%= @user.photo.crop_h %> ],
-    aspectRatio: 1
-  });
+    $.('#cropbox').Jcrop({
+        onChange: update_crop,
+        onSelect: update_crop,
+        setSelect: [ <%= @user.photo.crop_x %>, <%= @user.photo.crop_y %>, <%= @user.photo.crop_w %>, <%= @user.photo.crop_h %> ],
+        aspectRatio: 1
+    });
  
 });
 
@@ -42,7 +31,7 @@ function update_crop(coords) {
     var rx = 100 / coords.w;
     var ry = 100 / coords.h;
 
-    jQuery('#preview').css({
+    $.('#preview').css({
     	width: Math.round(rx * <%= @user.photo.image_geometry(:large).width %>) + 'px',
     	height: Math.round(ry * <%= @user.photo.image_geometry(:large).height %>) + 'px',
     	marginLeft: '-' + Math.round(rx * coords.x) + 'px',
@@ -51,15 +40,15 @@ function update_crop(coords) {
 
     //var ratio = <%= @user.photo.image_geometry(:original).width %> / <%= @user.photo.image_geometry(:large).width %>;
 
-    //jQuery('#crop_x').val(Math.floor(coords.x * ratio));
-    //jQuery('#crop_y').val(Math.floor(coords.y * ratio));
-    //jQuery('#crop_w').val(Math.floor(coords.w * ratio));
-    //jQuery('#crop_h').val(Math.floor(coords.h * ratio));
+    //$('#crop_x').val(Math.floor(coords.x * ratio));
+    //$('#crop_y').val(Math.floor(coords.y * ratio));
+    //$('#crop_w').val(Math.floor(coords.w * ratio));
+    //$('#crop_h').val(Math.floor(coords.h * ratio));
 
-    jQuery('#crop_x').val(coords.x);
-    jQuery('#crop_y').val(coords.y);
-    jQuery('#crop_w').val(coords.w);
-    jQuery('#crop_h').val(coords.h);
+    $('#crop_x').val(coords.x);
+    $('#crop_y').val(coords.y);
+    $('#crop_w').val(coords.w);
+    $('#crop_h').val(coords.h);
 }
 
 </script>

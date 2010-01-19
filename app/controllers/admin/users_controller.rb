@@ -48,17 +48,17 @@ class Admin::UsersController < ApplicationController
 	end
 
 	def show
-	@user = User.find(params[:id], :include => [:role, :photo])
-	@users = User.paginate :page => params[:users_page], :per_page => 6
-	@user_results = @user_search.all.paginate :page => params[:search_page], :per_page => 6
-
-	@page_title << " - " + @user.name
-
-    respond_to do |format|
-      format.html
-      format.xml  { head :ok }
+    	@user = User.find(params[:id], :include => [:role, :photo])
+    	@users = User.paginate :page => params[:users_page], :per_page => 6
+    	@user_results = @user_search.all.paginate :page => params[:search_page], :per_page => 6
+    
+    	@page_title << " - " + @user.name
+    
+        respond_to do |format|
+          format.html
+          format.xml  { head :ok }
+        end
     end
-  end
 
   def edit
     @user = User.find(params[:id], :include => [:role, :photo])

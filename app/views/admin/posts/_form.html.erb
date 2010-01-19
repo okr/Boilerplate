@@ -2,7 +2,7 @@
 <fieldset class="fieldset_toggle">
 	<div class="fieldset_left">
 		<div class="field_element">
-			<label for="published">Category&nbsp;:&nbsp;</label>
+			<label for="post_category">Category&nbsp;:&nbsp;</label>
 			<%= f.collection_select(:post_category_id, @categories, :id, :title, {:prompt => "Choose One"}, :class => "small formElement") %>
 		</div>
 		<div class="field_element">
