@@ -1,0 +1,78 @@
+--- !ruby/object:Gem::Specification 
+name: rack-payment
+version: !ruby/object:Gem::Version 
+  version: 0.1.4
+platform: ruby
+authors: 
+- remi
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2010-01-29 00:00:00 -08:00
+default_executable: 
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: activemerchant
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: "0"
+    version: 
+description: Turn-key E-Commerce for Ruby web applications
+email: remi@remitaylor.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: []
+
+files: 
+- lib/rack-payment/credit_card.rb
+- lib/rack-payment/request.rb
+- lib/rack-payment/test.rb
+- lib/rack-payment/payment.rb
+- lib/rack-payment/response.rb
+- lib/rack-payment/callable_hash.rb
+- lib/rack-payment/helper.rb
+- lib/rack-payment/billing_address.rb
+- lib/rack-payment/methods.rb
+- lib/rack-payment/views/credit-card-and-billing-info-form.html.erb
+- lib/rack-payment/views/credit-card-and-billing-info-form.css
+- lib/rack-payment/views/layout.html
+- lib/rack-payment.rb
+- lib/rack/payment.rb
+- lib/rack/payment/test.rb
+has_rdoc: true
+homepage: http://github.com/devfu/rack-payment
+licenses: []
+
+post_install_message: 
+rdoc_options: []
+
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.5
+signing_key: 
+specification_version: 3
+summary: Turn-key E-Commerce for Ruby web applications
+test_files: []
+

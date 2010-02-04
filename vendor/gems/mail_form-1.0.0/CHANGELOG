@@ -1,0 +1,21 @@
+* Version 1.0
+
+* Rename to mail_form and launch Rails 2.3 branch.
+
+* Version 0.4
+
+* Added support to template
+
+# Version 0.3
+
+* Added support to symbols on :sender, :subject and :recipients
+* Added support to symbols on :validate
+
+# Version 0.2
+
+* Added support to request objects and append DSL
+* Added support to :attachments (thanks to @andrewtimberlake)
+
+# Version 0.1
+
+* First release

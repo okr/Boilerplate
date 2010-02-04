@@ -1,0 +1,80 @@
+<%
+  @fields = fields # so we don't recreate the fields abunchof times
+%>
+
+<div class='rack-payment'>
+  <% if errors and not errors.empty? %>
+    <div class='errors'>
+      <p>There were problems processing your request:</p>
+      <ul class='errors'>
+        <% for error in errors %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form action='<%= post_to %>' method='post'>
+    <% if auth_token %>
+    <input name='authenticity_token' type='hidden' value='<%= auth_token %>' />
+    <% end %>
+    <fieldset>
+      <legend>Credit Card</legend>
+
+      <div class='group'>
+        <label for='credit_card_first_name'>First Name</label>
+        <%= @fields.credit_card.first_name %>
+
+        <label for='credit_card_last_name'>Last Name</label>
+        <%= @fields.credit_card.last_name %>
+
+        <label for='credit_card_number'>Card Number</label>
+        <%= @fields.credit_card.number %>
+      </div>
+
+      <div class='group'>
+        <label for='credit_card_type'>Card Type</label>
+        <%= @fields.credit_card.type %>
+
+        <label for='credit_card_cvv'>CVV</label>
+        <%= @fields.credit_card.cvv %>
+
+        <label for='credit_card_expiration_month'>Expiration</label>
+        <%= @fields.credit_card.expiration_month %>
+        <%= @fields.credit_card.expiration_year %>
+
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Billing Address</legend>
+
+      <div class='group'>
+        <label for='billing_address_name'>Full Name</label>
+        <%= @fields.billing_address.name %>
+
+        <label for='billing_address_address1'>Address</label>
+        <%= @fields.billing_address.address1 %>
+
+        <label for='billing_address_city'>City</label>
+        <%= @fields.billing_address.city %>
+      </div>
+
+      <div class='group'>
+        <label for='billing_address_state'>State</label>
+        <%= @fields.billing_address.state %>
+
+        <label for='billing_address_country'>Country</label>
+        <%= @fields.billing_address.country %>
+
+        <label for='billing_address_zip'>Zip</label>
+        <%= @fields.billing_address.zip %>
+      </div>
+    </fieldset>
+
+    <div id='complete_purchase'>
+      <input type='submit' value='Complete Purchase' />
+    </div>
+
+  </form>
+</div>

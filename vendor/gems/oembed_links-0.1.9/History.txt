@@ -1,0 +1,33 @@
+=== 0.1.6 / 2009-02-01
+
+* 1 minor enhancement
+  
+  * template resolver strips text on output
+
+=== 0.1.3 / 2008-10-16
+
+* 1 minor enhancement
+  
+  * refactored no matching scheme into .none? matcher
+
+=== 0.1.2 / 2008-10-16
+
+* 1 minor enhancement
+  
+  * add saimonmoore's nil response addition
+
+=== 0.1.1 / 2008-10-16
+
+* 1 minor fix
+  
+  * fix stupid namespacing bug, doh
+
+=== 0.1.0 / 2008-10-16
+
+* 2 minor enhancements
+
+  * added Ruby Tubesday fetcher (http://github.com/DanaDanger/ruby_tubesday)
+  * redid gem layout using Hoe
+
+
+
