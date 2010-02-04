@@ -24,4 +24,8 @@ module ApplicationHelper
 		escape_javascript generate_html(form_builder, method, options)
 	end
 	
+	def logged_in_users
+	    User.logged_in.count
+	end
+	
 end

@@ -10,6 +10,7 @@ class Admin::TagsController < ApplicationController
         
         respond_to do |format|
             format.json { render :text => @tags.to_json(:only => [:id, :name]) } if request.xhr?
+            format.html { render :text => @tags.to_json(:only => [:id, :name]) }
         end 
 	end
 	

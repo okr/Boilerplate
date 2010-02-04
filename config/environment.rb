@@ -41,7 +41,7 @@ Rails::Initializer.run do |config|
 	config.gem 'haml'
 	config.gem 'paperclip', :source => 'http://gemcutter.org'
 	config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
-	config.gem 'josevalim-simple_form', :lib => 'simple_form', :source => "http://gems.github.com"
+	config.gem 'mail_form', :source => "http://gemcutter.org", :version => '1.0'
 	config.gem 'justinfrench-formtastic', :lib => 'formtastic', :source  => 'http://gems.github.com'
 	config.gem 'pauldix-feedzirra', :lib => 'feedzirra', :source  => 'http://gems.github.com'
 	config.gem 'shuber-sortable', :lib => 'sortable', :source => 'http://gems.github.com'
@@ -51,6 +51,12 @@ Rails::Initializer.run do |config|
 	config.gem 'friendly_id', :lib => 'friendly_id'
 	config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'
 	config.gem 'jammit', :source => 'http://gemcutter.org'
+	config.gem 'hoptoad_notifier', :source => 'http://gemcutter.org'
+	config.gem 'bundler', :source => 'http://gemcutter.org'
+	#config.gem 'active-merchant', :source => 'http://gemcutter.org'
+	config.gem 'rack-payment'
+	config.gem 'oembed_links'
+	config.gem 'json'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

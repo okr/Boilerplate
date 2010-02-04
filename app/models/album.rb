@@ -9,7 +9,7 @@ class Album < ActiveRecord::Base
 	
 	belongs_to :user
 	
-	has_friendly_id :title, :use_slug => true, :strip_diacritics => true
+	has_friendly_id :title, :use_slug => true, :approximate_ascii => true
 	
 	fires :new_album, :on => [:create, :update], :actor => :user
 	

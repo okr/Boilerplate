@@ -18,9 +18,11 @@ class User < ActiveRecord::Base
 
 	validates_presence_of :role_id, :message => ": User must be assigned to a role."
 
-	acts_as_authentic
+	acts_as_authentic do |c|
+	   c.logged_in_timeout 30.minutes
+	 end
 
-	has_friendly_id :login, :use_slug => true, :strip_diacritics => true
+	has_friendly_id :login, :use_slug => true, :approximate_ascii => true
 	
 	has_many :albums
 	has_many :events

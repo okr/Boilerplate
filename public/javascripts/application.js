@@ -88,13 +88,19 @@ $(document).ready(function(){
 		'zoomSpeedIn':	300, 
 		'zoomSpeedOut': 300, 
 		'overlayShow':	true,
-		'imageScale': true,
 		'overlayOpacity': .5,
 		'centerOnScroll': true,
 		'zoomOpacity': true,
         'easingIn': "easeOutBack",
         'easingOut': "easeInBack",
-        'easingChange': "easeInOutQuart"
+        'easingChange': "easeInOutQuart",
+        'showCloseButton': true,
+        'cyclic': true,
+        'autoScale': true,
+        'titlePosition': 'over',
+        'transitionIn': 'elastic',
+        'transitionOut': 'elastic'
+        
 	});
 	
     $("a.crop").fancybox({
@@ -111,7 +117,8 @@ $(document).ready(function(){
         'frameHeight': 600,
         'easingIn': "easeOutBack",
         'easingOut': "easeInBack",
-        'easingChange': "easeInOutQuart"
+        'easingChange': "easeInOutQuart",
+        'autoDimensions': true
     });
 
 	$("a.toplink").click(function(){ 
