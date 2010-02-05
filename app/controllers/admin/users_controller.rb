@@ -43,7 +43,7 @@ class Admin::UsersController < ApplicationController
 			@user_results = @user_search.all.paginate :page => params[:search_page], :per_page => 6
 			@page_title << "Create A New User"
 			@roles = Role.find(:all)
-			render :action => :new
+			render :action => 'new'
 		end
 	end
 
@@ -148,7 +148,7 @@ class Admin::UsersController < ApplicationController
 	    @user = User.find(params[:id], :include => :photo)
 
         respond_to do |format|
-            format.js { render :layout => false, :object => @user }
+            format.js { render :layout => false }
         end
 	end
 	

@@ -4,7 +4,7 @@
  * www.drewwilson.com
  * code.drewwilson.com/entry/tiptip-jquery-plugin
  *
- * Version 1.1   -   Updated: Jan. 03, 2010
+ * Version 1.2   -   Updated: Jan. 13, 2010
  *
  * This Plug-In will create a custom tooltip to replace the default
  * browser tooltip. It is extremely lightweight and very smart in
@@ -52,7 +52,7 @@
 				var timeout = false;
 				org_elem.hover(function(){
 					opts.enter.call(this);
-					tiptip_content.text(org_title);
+					tiptip_content.html(org_title);
 					tiptip_holder.hide().removeAttr("class").css("margin","0");
 					tiptip_arrow.removeAttr("style");
 					
@@ -80,8 +80,8 @@
 						} else if((tip_w + left) > parseInt($(window).width())){
 							t_class = "_left";
 							arrow_top = Math.round(tip_h - 13) / 2;
-							arrow_left =  Math.round(tip_w - 5);
-							marg_left = Math.round(left - (tip_w + opts.edgeOffset));
+							arrow_left =  Math.round(tip_w);
+							marg_left = Math.round(left - (tip_w + opts.edgeOffset + 5));
 							marg_top = Math.round(top + h_compare);
 						}
 					}
@@ -94,10 +94,13 @@
 						arrow_top = -12;						
 						marg_top = Math.round(top + org_height + opts.edgeOffset);
 					}
-					if(t_class == "_right_top" || t_class == "_left_top"){		
+					if(t_class == "_right_top" || t_class == "_left_top"){
 						marg_top = marg_top + 5;
 					} else if(t_class == "_right_bottom" || t_class == "_left_bottom"){		
 						marg_top = marg_top - 5;
+					}
+					if(t_class == "_left_top" || t_class == "_left_bottom"){	
+						marg_left = marg_left + 5;
 					}
 					tiptip_arrow.css({"margin-left": arrow_left+"px", "margin-top": arrow_top+"px"});
 					tiptip_holder.css({"margin-left": marg_left+"px", "margin-top": marg_top+"px"}).attr("class","tip"+t_class);
