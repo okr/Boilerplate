@@ -1,64 +1,37 @@
-<link href="/stylesheets/Jcrop/jquery.Jcrop.css" media="screen" rel="stylesheet" type="text/css" />
-<script src="/javascripts/jquery.Jcrop.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-
-(function($) {
-    	$.ajaxSetup({ 
-    		beforeSend: function(xhr) {
-    			xhr.setRequestHeader("Accept", "text/javascript, text/html, application/xml, text/xml, application/x-json, */*");
-    			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    		},
-    		success: function(response, status){
-    			//$.unblockUI();
-    		}
+<script language="Javascript">
+ 
+    function showPreview(coords)
+    {
+    	var rx = 100 / coords.w;
+    	var ry = 100 / coords.h;
+    	var ratio = <%= @user.photo.image_geometry(:original).width %> / <%= @user.photo.image_geometry(:large).width %>; 
+     
+    	$('#preview').css({
+    		width: Math.round(rx * <%= @user.photo.image_geometry(:large).width.to_i %>) + 'px',
+    		height: Math.round(ry * <%= @user.photo.image_geometry(:large).height.to_i %>) + 'px',
+    		marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+    		marginTop: '-' + Math.round(ry * coords.y) + 'px'
     	});
-    
-    	$().ajaxSend(function(event, request, settings) {
-    		if (typeof(AUTH_TOKEN) == "undefined") return;
-    		settings.data = settings.data || "";
-    		settings.data += ((settings.data == "") ? "" : "&") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
-    	});
-
-    $.('#cropform').ajaxForm({
-        target: '#cropper'
-    });
-    
-    
-    $.('#cropbox').Jcrop({
-        onChange: update_crop,
-        onSelect: update_crop,
-        setSelect: [ <%= @user.photo.crop_x %>, <%= @user.photo.crop_y %>, <%= @user.photo.crop_w %>, <%= @user.photo.crop_h %> ],
-        aspectRatio: 1
+      $('#crop_x').val(Math.round(coords.x * ratio));
+      $('#crop_y').val(Math.round(coords.y * ratio));
+      $('#crop_w').val(Math.round(coords.w * ratio));
+      $('#crop_h').val(Math.round(coords.h * ratio));
+    }
+     
+    $(function() {
+        $('#cropform').ajaxForm({
+            target: '#cropper'
+        });
+        $('#cropbox').Jcrop({
+            onSelect: showPreview,
+            onChange: showPreview,
+            setSelect:   [ <%= @user.photo.crop_x %>, <%= @user.photo.crop_y %>, <%= @user.photo.crop_w %>, <%= @user.photo.crop_h %> ],
+            aspectRatio: 1
+        });
     });
  
-})(jQuery);
-
-function update_crop(coords) {
-    var rx = 100 / coords.w;
-    var ry = 100 / coords.h;
-
-    $.('#preview').css({
-    	width: Math.round(rx * <%= @user.photo.image_geometry(:large).width %>) + 'px',
-    	height: Math.round(ry * <%= @user.photo.image_geometry(:large).height %>) + 'px',
-    	marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-    	marginTop: '-' + Math.round(ry * coords.y) + 'px'
-    });
-
-    //var ratio = <%= @user.photo.image_geometry(:original).width %> / <%= @user.photo.image_geometry(:large).width %>;
-
-    //$('#crop_x').val(Math.floor(coords.x * ratio));
-    //$('#crop_y').val(Math.floor(coords.y * ratio));
-    //$('#crop_w').val(Math.floor(coords.w * ratio));
-    //$('#crop_h').val(Math.floor(coords.h * ratio));
-
-    $('#crop_x').val(coords.x);
-    $('#crop_y').val(coords.y);
-    $('#crop_w').val(coords.w);
-    $('#crop_h').val(coords.h);
-}
-
 </script>
+
 <div id="cropper">
     <div style="width:100px; height:100px; overflow:hidden">
     	<%= image_tag @user.photo.image.url(:large), :id => "preview" %>

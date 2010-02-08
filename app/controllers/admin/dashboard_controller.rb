@@ -17,10 +17,13 @@ class Admin::DashboardController < ApplicationController
 		@links = Link.admin_links
 		
 		respond_to do |format|
-			format.html
-			format.js { 
-				render :partial => "recent_activity", :layout => false 
-			}
+		    unless request.xhr?
+			    format.html
+			else
+    			format.js { 
+                    render :partial => "recent_activity", :layout => false
+    			}
+    		end
 		end
 	end
   

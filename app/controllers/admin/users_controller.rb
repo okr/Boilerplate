@@ -156,10 +156,10 @@ class Admin::UsersController < ApplicationController
 	    @user = User.find(params[:id], :include => :photo)
 
         if @user.update_attributes(params[:user])
-          flash.now[:notice] = "User photo cropped successfully!"
-          respond_to do |format|
+            flash.now[:notice] = "User photo cropped successfully!"
+            respond_to do |format|
               format.js { render :action => "crop", :layout => false }
-          end
+            end
         else
             flash.now[:error] = "User photo could not be cropped."
             respond_to do |format|

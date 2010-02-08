@@ -17,5 +17,9 @@ class Post < ActiveRecord::Base
 	has_friendly_id :title, :use_slug => true, :approximate_ascii => true
 	
 	fires :new_post, :on => [:create, :update], :actor => :user
+	
+	has_many :attachments, :dependent => :destroy, :as => :attachable
+	
+	has_many :photos, :as => :attachable
 
 end
