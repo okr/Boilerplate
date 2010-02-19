@@ -4,13 +4,13 @@ class Admin::TagsController < ApplicationController
 	layout 'admin'
 	
     def index
-       #ActiveRecord::Base.include_root_in_json = false
+       ActiveRecord::Base.include_root_in_json = false
         
         @tags = Tag.search(:name_like => params[:q]).all
         
         respond_to do |format|
             format.json { render :text => @tags.to_json(:only => [:id, :name]) } if request.xhr?
-            format.html { render :text => @tags.to_json(:only => [:id, :name]) }
+            #format.html { render :text => @tags.to_json(:only => [:id, :name]) }
         end 
 	end
 	

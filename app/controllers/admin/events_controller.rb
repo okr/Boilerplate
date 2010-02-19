@@ -12,7 +12,7 @@ class Admin::EventsController < ApplicationController
 
 		respond_to do |format|
 			format.html
-			format.js { render :partial => "search_results", :layout => false }
+			format.js
 		end
 	end
 

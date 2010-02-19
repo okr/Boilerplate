@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
 		@pages = Page.published.all(:conditions => {:home => false})
 	end
 	
-	#def correct_safari_and_ie_accept_headers
-		#request.accepts.sort!{ |x, y| y.to_s == 'application/xml' ? 1 : -1 } if request.xhr?
-	#end
+	def correct_safari_and_ie_accept_headers
+		request.accepts.sort!{ |x, y| y.to_s == 'application/xml' ? 1 : -1 } if request.xhr?
+	end
 
 	protected
 

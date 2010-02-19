@@ -13,11 +13,8 @@ class Admin::PagesController < ApplicationController
 		@page_title << " - " + @page.title
 
 		respond_to do |format|
-			unless request.xhr?
-				format.html
-			else
-				format.js { render :partial => "sidebar", :layout => false }
-			end
+			format.html
+			format.js
 		end
 	end
 
@@ -27,11 +24,8 @@ class Admin::PagesController < ApplicationController
 		@pages = Page.paginate :page => params[:pages_page], :per_page => 6, :order => :position
 		
 		respond_to do |format|
-			unless request.xhr?
-				format.html
-			else
-				format.js { render :partial => "search_results", :layout => false }
-			end
+			format.html
+			format.js
 		end
 	end
 

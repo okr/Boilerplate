@@ -18,8 +18,8 @@ class Post < ActiveRecord::Base
 	
 	fires :new_post, :on => [:create, :update], :actor => :user
 	
-	has_many :attachments, :dependent => :destroy, :as => :attachable
+	#has_many :attachments, :dependent => :destroy, :as => :attachable
 	
-	has_many :photos, :as => :attachable
+	#has_many :photos, :as => :attachable
 
 end

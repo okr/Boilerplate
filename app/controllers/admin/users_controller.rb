@@ -13,7 +13,7 @@ class Admin::UsersController < ApplicationController
 		
 		respond_to do |format|
 			format.html
-			format.js { render :partial => "search_results", :layout => false }
+			format.js
 		end
 	end
 
@@ -146,6 +146,7 @@ class Admin::UsersController < ApplicationController
 	
 	def crop
 	    @user = User.find(params[:id], :include => :photo)
+	    @photo = @user.photo
 
         respond_to do |format|
             format.js { render :layout => false }

@@ -1,11 +1,15 @@
 <% content_for :head do %>
-<script type="text/javascript" charset="utf-8">
-
-jQuery(function() {
-    $("input[type=text]").autoSuggest("<%= admin_tags_path %>", {minChars: 2, matchCase: false});
-})
-
-</script>
+    <script language="Javascript">
+        $(document).ready(function(){
+            var data = { tags: [
+                <% for tag in Tag.all %>
+                {id: "<%= tag.id %>", name: "<%= tag.name %>"}<% unless tag == Tag.last %>,<% end %>
+                <% end %>
+            ]};
+            
+            $("#tags-input").autoSuggest(data.tags, {selectedItemProp: 'name', searchObjProps: 'name', selectedValuesProp: 'name', preFill: '<%= @post.tag_list %>'});
+        })
+    </script>
 <% end %>
 <ul class="submenu childArea" id="tags-form">
 	<li>

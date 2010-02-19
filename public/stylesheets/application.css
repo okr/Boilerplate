@@ -4283,7 +4283,7 @@ div.jGrowl div.jGrowl-notification.error {
 	display: block;
 	position: relative;
 	float: left;
-	width: 120px;
+	width: auto;
 	height: 50px;
 	margin: 0 5px;
 	background-color: #fff;

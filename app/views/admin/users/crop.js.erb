@@ -12,20 +12,24 @@
     		marginLeft: '-' + Math.round(rx * coords.x) + 'px',
     		marginTop: '-' + Math.round(ry * coords.y) + 'px'
     	});
-      $('#crop_x').val(Math.round(coords.x * ratio));
-      $('#crop_y').val(Math.round(coords.y * ratio));
-      $('#crop_w').val(Math.round(coords.w * ratio));
-      $('#crop_h').val(Math.round(coords.h * ratio));
+
+        $('#crop_x').val(Math.round(coords.x * ratio));
+        $('#crop_y').val(Math.round(coords.y * ratio));
+        $('#crop_w').val(Math.round(coords.w * ratio));
+        $('#crop_h').val(Math.round(coords.h * ratio));
     }
      
     $(function() {
+        $('#cropsubmit').click(function() { 
+            $(this).block({ message: 'loading...' }); 
+        });
         $('#cropform').ajaxForm({
             target: '#cropper'
         });
         $('#cropbox').Jcrop({
+            setSelect:   [ <%= @user.photo.crop_x.to_i %>, <%= @user.photo.crop_y.to_i %>, <%= @user.photo.crop_w.to_i %>, <%= @user.photo.crop_h.to_i %> ],
             onSelect: showPreview,
             onChange: showPreview,
-            setSelect:   [ <%= @user.photo.crop_x %>, <%= @user.photo.crop_y %>, <%= @user.photo.crop_w %>, <%= @user.photo.crop_h %> ],
             aspectRatio: 1
         });
     });

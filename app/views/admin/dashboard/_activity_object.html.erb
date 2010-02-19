@@ -3,7 +3,7 @@
 		<%= activity_object.subject.class.to_s.split(/(?=[A-Z])/).join('&nbsp;') %>
 	</td>
 	<td>
-		<a href="/admin/<%= activity_object.subject_type.downcase.pluralize %>/<%= activity_object.subject.to_param %>"><%= activity_object.subject.title %></a>
+		<a href="/admin/<%= activity_object.subject_type.downcase.pluralize %>/<%= activity_object.subject.to_param %>"><% if activity_object.subject.title %><%= activity_object.subject.title %><% else %><%= activity_object.subject.name %><% end %></a>
 	</td>
 	<td>
 		<a href="/admin/users/<%= activity_object.actor.to_param %>"><%= activity_object.actor.name %></a>

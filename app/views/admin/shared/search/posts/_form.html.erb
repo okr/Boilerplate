@@ -2,7 +2,7 @@
 	<span class="spyglass"></span>
 	<%= f.text_field :title_contains %>
 	<a href="#" class="toggle_search" title="Search and filter all posts.">Advanced Search</a>
-	<span class="search_count"><%= @post_search.count %> posts found</span>
+	<span class="search_count"><%= @count %> posts found</span>
 </div>
 <div id="advanced_search" style="display:none">
 	<fieldset>
@@ -19,8 +19,8 @@
 			<%= f.check_box :published_is, {}, "1", "" %>
 		</div>
 		<div class="field_element">
-			<%= f.label :post_category_id_eq, "Category" %><br />
-			<%= f.select :post_category_id_eq, @categories.collect {|c| [c.title, c.id]}, :prompt => "Choose One" %>
+			<%= f.label :post_category_id_is, "Category" %><br />
+			<%= f.select :post_category_id_is, PostCategory.all.collect {|c| [c.title, c.id]}, :prompt => "Choose One" %>
 		</div>
 	</fieldset>
 	<div class="submit">

@@ -28,7 +28,7 @@ class Photo < ActiveRecord::Base
 	validates_attachment_size(:image, { :in => 0.06..1.5.megabyte, :message => ": All image files must be larger than 60k and smaller than 1.5 megabytes."})
 
 	#attr_protected :image_file_name, :image_content_type, :image_size
-	attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :x, :y
+	#attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :x, :y
 	after_update :reprocess_image, :if => :cropping?
 
 	def cropping?  

@@ -22,11 +22,10 @@ class Admin::PostsController < ApplicationController
 	def index
 		session[:return_to] = request.request_uri
 		@post_results = @post_search.all(:include => :tags).paginate :page => params[:blog_page], :per_page => 12
+		@count = @post_results.count
 		
 		respond_to do |format|
-			format.js { 
-				render :partial => "search_results", :layout => false
-			}
+			format.js
     	    format.html
 		end
 	end
@@ -63,6 +62,8 @@ class Admin::PostsController < ApplicationController
 				format.html { render :action => "new" }
 			end
 		end
+		rescue ActiveRecord::RecordInvalid => e
+		    render :action => 'new'
 	end
 	
 	def edit
@@ -83,6 +84,10 @@ class Admin::PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		
 		@post.user = current_user
+		
+		#@tags = params[:as_values_tag_list]
+		
+		#@post.tag_list = params[:as_values_tag_list].to_s
 
 		respond_to do |format|
 			if @post.update_attributes(params[:post])

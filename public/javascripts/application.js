@@ -1,47 +1,10 @@
 (function($) {
-	$.ajaxSetup({ 
-		beforeSend: function(xhr) {
-			xhr.setRequestHeader("Accept", "text/javascript, text/html, application/xml, text/xml, application/x-json, */*");
-			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		},
-		success: function(response, status){
-			$.unblockUI();
-		}
-	});
-
 	$().ajaxSend(function(event, request, settings) {
 		if (typeof(AUTH_TOKEN) == "undefined") return;
 		settings.data = settings.data || "";
 		settings.data += ((settings.data == "") ? "" : "&") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
 	});
 })(jQuery);
-
-$.fn.submitWithAjax = function() {
-	this.submit(function() {
-		$.post(
-			$(this).attr("action"),
-			$(this).serialize(),
-			null,
-			"script"
-		);
-		return false;
-	})
-	return this;
-};
-
-$.fn.toggleSearch = function() {
-	this.click(function() {
-		$('#advanced_search').toggle("blind");
-		var $this = $("a.toggle_search").parent("li");
-		if($(this).is(".active")){
-			$(this).removeClass("active")
-		}
-		else {
-			$(this).addClass("active");
-		}
-		return false;
-	});
-}
 
 $(document).ready(function(){
 
@@ -120,7 +83,9 @@ $(document).ready(function(){
 
 	$("a[rel=external]").attr("target", "blank");
 
-    $("a").tipTip();
+    $("a.tip").tipTip();
+    
+    $("select, input:checkbox, input:radio, input:file").uniform();
 	
 	//rounded corners
 	
@@ -128,13 +93,10 @@ $(document).ready(function(){
 		return(true);
 	} else {
 		$("#sub_nav ul li a").corner("round 10px");
-		$(".submit input").corner("round 5px");
-		$(".submit button").corner("round 5px");
-		$(".submit a").corner("round 5px");
+		$(".submit input, .submit button, .submit a, .search_count, #search_menu form #advanced_search fieldset .field_element").corner("round 5px");
 		$("#login_form").corner("round 10px");
 		$("#search_menu .search_button .spyglass").corner("round 5px tl bl");
 		$("#search_menu .search_button .toggle_search").corner("round 5px tr br");
-		$(".search_count, #search_menu form #advanced_search fieldset .field_element").corner("round 5px");
 		$(".actions_left").corner("round 7px tl bl");
 		$(".actions_right").corner("round 7px tr br");
 		$("#timeline_event").corner("round 3px");

@@ -17,10 +17,10 @@
 	<td class="table_actions">
  		<ul>
 			<li>
-				<%= link_to image_tag("/images/icons/shape_square_edit.png"), edit_admin_post_path(posts), :title => "Edit this post." %>
+				<%= link_to image_tag("/images/icons/shape_square_edit.png"), edit_admin_post_path(posts), :title => "Edit this post.", :class => 'tip' %>
 			</li>
 			<li>
-				<%= link_to image_tag("/images/icons/delete.png"), admin_post_path(posts), :confirm => 'Are you sure?', :method => :delete, :title => "Delete this post." %>
+				<%= link_to image_tag("/images/icons/delete.png"), admin_post_path(posts), :confirm => 'Are you sure?', :method => :delete, :title => "Delete this post.", :class => 'tip' %>
 			</li>
 		</ul>
 	</td>

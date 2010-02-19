@@ -9,11 +9,8 @@ class Admin::LinksController < ApplicationController
 		@link_results = @link_search.all.paginate :page => params[:search_page], :per_page => 6
 
 		respond_to do |format|
-			unless request.xhr?
-				format.html
-			else
-				format.js { render :partial => "search_results", :layout => false }
-			end
+			format.html
+			format.js
 		end
 	end
   
